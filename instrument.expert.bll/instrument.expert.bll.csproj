@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E97B53CC-0382-4EF6-802A-620095A02C40}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>instrument.expert.bll</RootNamespace>
+    <AssemblyName>instrument.expert.bll</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IExpertBll.cs" />
+    <Compile Include="IExpertCommentBll.cs" />
+    <Compile Include="IExpertRecordsBll.cs" />
+    <Compile Include="IExpertScienceBll.cs" />
+    <Compile Include="IIMAdminUserBll.cs" />
+    <Compile Include="IIMSortBll.cs" />
+    <Compile Include="IIMSortClassBll.cs" />
+    <Compile Include="IIMSortMainBll.cs" />
+    <Compile Include="Impl\ExpertBll.cs" />
+    <Compile Include="Impl\ExpertCommentBll.cs" />
+    <Compile Include="Impl\ExpertRecordsBll.cs" />
+    <Compile Include="Impl\ExpertScienceBll.cs" />
+    <Compile Include="Impl\IMAdminUserBll.cs" />
+    <Compile Include="Impl\IMSortBll.cs" />
+    <Compile Include="Impl\IMSortClassBll.cs" />
+    <Compile Include="Impl\IMSortMainBll.cs" />
+    <Compile Include="Impl\SampleBll.cs" />
+    <Compile Include="Impl\SampleClassBll.cs" />
+    <Compile Include="Impl\SampleSortBll.cs" />
+    <Compile Include="Impl\VIPZoneCityBll.cs" />
+    <Compile Include="Impl\VIPZoneCountryBll.cs" />
+    <Compile Include="Impl\VIPZoneProvinceBll.cs" />
+    <Compile Include="ISampleBll.cs" />
+    <Compile Include="ISampleClassBll.cs" />
+    <Compile Include="ISampleSortBll.cs" />
+    <Compile Include="IVIPZoneCityBll.cs" />
+    <Compile Include="IVIPZoneCountryBll.cs" />
+    <Compile Include="IVIPZoneProvinceBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\instrument.expert.dto\instrument.expert.dto.csproj">
+      <Project>{7116d52b-1cdc-4da1-927b-d914e3c77230}</Project>
+      <Name>instrument.expert.dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\instrument.expert.model\instrument.expert.model.csproj">
+      <Project>{22de9e4e-ee9c-4586-95c4-0d45e557cbbd}</Project>
+      <Name>instrument.expert.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\instrument.expert.repository\instrument.expert.repository.csproj">
+      <Project>{61932d08-efd9-49ad-a609-e96825c27dc9}</Project>
+      <Name>instrument.expert.repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

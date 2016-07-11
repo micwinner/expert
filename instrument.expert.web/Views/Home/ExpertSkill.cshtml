@@ -1,0 +1,384 @@
+﻿@{
+    ViewBag.AppName = "ExpertSkillApp";
+    ViewBag.Title = "专家录入";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .checkbox-right { margin-right: 20px; }
+</style>
+
+<div style="margin-top: 20px;" ng-controller="expertSkillController">
+<div style="color: #AAA; margin: 0 auto; width: 100%;">
+<form class="form-horizontal" role="form">
+<input type="hidden" name="expertid" id="expertid" ng-model="model.expertid" value="@ViewBag.eid"/>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">1、所熟悉的仪器类别：（请按照熟悉程度的由深到浅选择三种最熟悉的仪器）</h4>
+    </div>
+    <div class="panel-body" ng-include="'@Url.Content("~/templetes/ins_cls.html")'"></div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">2、擅长的应用技术领域：（请按照熟悉程度的由深到浅选择最擅长的应用技术领域）</h4>
+    </div>
+    <div class="panel-body" ng-include="'@Url.Content("~/templetes/dom_cls.html")'"></div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">3、最擅长仪器的哪些方面：（可多选）</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <div class="checkbox checkbox-inline">
+                    <label class="checkbox-right">
+                        <input type="checkbox" ng-model="model.side_yj" ng-true-value="1" ng-false-value="0"/>硬件
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" ng-model="model.side_rj" ng-true-value="1" ng-false-value="0"/>软件
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" ng-model="model.side_yy" ng-true-value="1" ng-false-value="0"/>应用
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" ng-model="model.side_cz" ng-true-value="1" ng-false-value="0"/>操作/维护/维修
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" ng-model="model.side_sjcl" ng-true-value="1" ng-false-value="0"/>数据处理/谱图解析
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" ng-model="model.side_scfx" ng-true-value="1" ng-false-value="0"/>市场分析
+                    </label>
+                    <label class="checkbox-right" style="margin-top: 15px;">
+                        <input type="checkbox" ng-model="model.side_qt" ng-true-value="1" ng-false-value="0"/>其他
+                        <input type="text" class="form-control input-sm col-sm-6" ng-model="model.side_qt_des"/>(如果选择其他，则需要输入具体信息)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">4、最熟悉的外文语种：（单选）</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="language" value="0" ng-model="model.language"/>英语
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="language" value="1" ng-model="model.language"/>日语
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="language" value="2" ng-model="model.language"/>德语
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="language" value="3" ng-model="model.language"/>法语
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="language" value="4" ng-model="model.language"/>俄语
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="language" value="5" ng-model="model.language"/>其他
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">5、外文水平：（听、说、读、写）</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="languagelevel" value="0" ng-model="model.languagelevel"/>一般
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="languagelevel" value="1" ng-model="model.languagelevel"/>精通
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="languagelevel" value="2" ng-model="model.languagelevel"/>熟悉
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="languagelevel" value="3" ng-model="model.languagelevel"/>不会
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">6、IT技能：（上网水平、办公软件）</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="itlevel" value="0" ng-model="model.itlevel"/>熟练
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="itlevel" value="1" ng-model="model.itlevel"/>普通
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="itlevel" value="2" ng-model="model.itlevel"/>刚接触
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="itlevel" value="3" ng-model="model.itlevel"/>不会
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">7、培训经验：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="training" value="0" ng-model="model.training"/>
+                    无
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="training" value="1" ng-model="model.training"/>
+                    1－3年
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="training" value="2" ng-model="model.training"/>
+                    3－5年
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="training" value="3" ng-model="model.training"/>
+                    5年以上
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">8、与相关仪器厂家的熟悉程度：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="firm_familiarity" value="0" ng-model="model.firm_familiarity"/>
+                    担任厂家的顾问
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="firm_familiarity" value="1" ng-model="model.firm_familiarity"/>
+                    熟悉
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="firm_familiarity" value="2" ng-model="model.firm_familiarity"/>
+                    一般
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="firm_familiarity" value="3" ng-model="model.firm_familiarity"/>
+                    不太熟悉
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">9、与相关协会/政府单位的熟悉程度：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="gov_familiarity" value="0" ng-model="model.gov_familiarity"/>
+                    在其中任职
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="gov_familiarity" value="1" ng-model="model.gov_familiarity"/>
+                    非常熟悉
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="gov_familiarity" value="2" ng-model="model.gov_familiarity"/>
+                    一般
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="gov_familiarity" value="3" ng-model="model.gov_familiarity"/>
+                    不太熟悉
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div style="font-size: 20px; text-align: center; width: 100%;">
+        <button class="pull-right btn btn-primary" id="saveBtn" style="display: inline; margin-right: 10px;" ng-click="insert()" href="#">
+            <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            保 存,并进入下一步
+        </button>
+    </div>
+</div>
+
+</form>
+</div>
+</div>
+<script type="text/javascript">
+    var app = angular.module("ExpertSkillApp", []);
+    app.controller("expertSkillController", function($http, $scope, ExpertSkillService) {
+        $scope.model = {};
+        $scope.model.expertid = $("#expertid").val();
+
+        //ins1_1 ins2_1 ins3_1
+        ExpertSkillService.getimsortmainlist().success(function(response) {
+            $scope.imsortmainlist1 = response;
+            $scope.imsortmainlist2 = response;
+            $scope.imsortmainlist3 = response;
+        });
+
+        //ins1_2
+        var ins1_cls2 = function() {
+            $scope.ins1_cls2_list = [];
+            $scope.ins1_cls3_list = [];
+            ExpertSkillService.getcls2byid($scope.model.ins1_cls1).success(function(response) {
+                $scope.ins1_cls2_list = response;
+            });
+        };
+        $scope.$watch("model.ins1_cls1", ins1_cls2);
+
+        //ins1_3
+        var ins1_cls3 = function() {
+            ExpertSkillService.getcls3byid2($scope.model.ins1_cls2).success(function(response) {
+                $scope.ins1_cls3_list = response;
+            });
+        };
+        $scope.$watch("model.ins1_cls2", ins1_cls3);
+
+        //ins2_2
+        var ins2_cls2 = function() {
+            $scope.ins2_cls2_list = [];
+            $scope.ins2_cls3_list = [];
+            ExpertSkillService.getcls2byid($scope.model.ins2_cls1).success(function(response) {
+                $scope.ins2_cls2_list = response;
+            });
+        };
+        $scope.$watch("model.ins2_cls1", ins2_cls2);
+
+        //ins2_3
+        var ins2_cls3 = function() {
+            ExpertSkillService.getcls3byid2($scope.model.ins2_cls2).success(function(response) {
+                $scope.ins2_cls3_list = response;
+            });
+        };
+        $scope.$watch("model.ins2_cls2", ins2_cls3);
+
+        //ins3_2
+        var ins3_cls2 = function() {
+            $scope.ins3_cls2_list = [];
+            $scope.ins3_cls3_list = [];
+            ExpertSkillService.getcls2byid($scope.model.ins3_cls1).success(function(response) {
+                $scope.ins3_cls2_list = response;
+            });
+        };
+        $scope.$watch("model.ins3_cls1", ins3_cls2);
+
+        //ins3_3
+        var ins3_cls3 = function() {
+            ExpertSkillService.getcls3byid2($scope.model.ins3_cls2).success(function(response) {
+                $scope.ins3_cls3_list = response;
+            });
+        };
+        $scope.$watch("model.ins3_cls2", ins3_cls3);
+
+        //dom1_1 dom2_1 dom3_1
+        ExpertSkillService.getsamplelist().success(function(response) {
+            $scope.samplelist1 = response;
+            $scope.samplelist2 = response;
+            $scope.samplelist3 = response;
+        });
+
+        //dom1_2
+        var dom1_cls2 = function() {
+            $scope.dom1_cls2_list = [];
+            $scope.dom1_cls3_list = [];
+            ExpertSkillService.getdomcls2byid($scope.model.dom1_cls1).success(function(response) {
+                $scope.dom1_cls2_list = response;
+            });
+        };
+        $scope.$watch("model.dom1_cls1", dom1_cls2);
+
+        //dom1_3
+        var dom1_cls3 = function() {
+            ExpertSkillService.getdomcls3byid($scope.model.dom1_cls2).success(function(response) {
+                $scope.dom1_cls3_list = response;
+            });
+        };
+        $scope.$watch("model.dom1_cls2", dom1_cls3);
+
+        //dom2_2
+        var dom2_cls2 = function() {
+            $scope.dom2_cls2_list = [];
+            $scope.dom2_cls3_list = [];
+            ExpertSkillService.getdomcls2byid($scope.model.dom2_cls1).success(function(response) {
+                $scope.dom2_cls2_list = response;
+            });
+        };
+        $scope.$watch("model.dom2_cls1", dom2_cls2);
+
+        //dom2_3
+        var dom2_cls3 = function() {
+            ExpertSkillService.getdomcls3byid($scope.model.dom2_cls2).success(function(response) {
+                $scope.dom2_cls3_list = response;
+            });
+        };
+        $scope.$watch("model.dom2_cls2", dom2_cls3);
+
+        //dom3_2
+        var dom3_cls2 = function() {
+            $scope.dom3_cls2_list = [];
+            $scope.dom3_cls3_list = [];
+            ExpertSkillService.getdomcls2byid($scope.model.dom3_cls1).success(function(response) {
+                $scope.dom3_cls2_list = response;
+            });
+        };
+        $scope.$watch("model.dom3_cls1", dom3_cls2);
+
+        //dom3_3
+        var dom3_cls3 = function() {
+            ExpertSkillService.getdomcls3byid($scope.model.dom3_cls2).success(function(response) {
+                $scope.dom3_cls3_list = response;
+            });
+        };
+        $scope.$watch("model.dom3_cls2", dom3_cls3);
+
+        $scope.insert = function() {
+            confirmMsg("暂不", "确定", "确定要添加此条信息吗？", function() {
+                ExpertSkillService.insert($scope.model).success(function(response) {
+                    if (response !== null) {
+                        if (response.Code > 0) {
+                            alertMsg("完成", response.Msg, function() {
+                                location.href = "/home/expertcomment/" + response.Result;
+                            });
+                        }
+                    }
+                });
+            });
+        };
+
+    });
+</script>
+<script src="~/businessjs/servicejs/expertSkillService.js"></script>

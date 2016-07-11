@@ -1,0 +1,191 @@
+﻿@model instrument.expert.dto.EXP_RecordsDto
+@{
+    ViewBag.AppName = "ExitRecordsApp";
+    ViewBag.Title = "修改合作记录";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker.min.css")" rel="stylesheet"/>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js")"></script>
+
+<div ng-controller="ExitRecordsController">
+    <div style="color: #AAA; margin: 0 auto; width: 100%;">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">专家基础信息录入</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" novalidate name="expertForm" method="POST" role="form">
+                    <input type="hidden" name="expertid" ng-model="model.expertid"/>
+                    <!--合作内容-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">合作内容：</label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label text-left">合作栏目：</label>
+                            <div class="col-sm-4">
+                                <select id="progromid" name="progromid" class="form-control" ng-model="model.progromid">
+                                    <option value="1">采访</option>
+                                    <option value="2">评审</option>
+                                    <option value="3">发文章</option>
+                                    <option value="4">做讲座</option>
+                                    <option value="5">活动</option>
+                                    <option value="6">其他</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label">本网动作：</label>
+                            <div class="col-sm-4">
+                                <select id="actionid" name="actionid" class="form-control" ng-model="model.actionid">
+                                    <option ng-repeat="x in trees" ng-selected="x.ID == model.actionid" value="{{x.ID}}">{{x.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">动作标题：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="model.actiontitle" name="actiontitle" placeholder="请输入动作标题"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">动作时间：</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-4">
+                                <input type="text" id="actionstartdate" class="form-control" name="actionstartdate" placeholder="请输入开始时间" ng-model="model.actionstartdate"/>
+                            </div>
+                            <label class="col-sm-1 control-label">至</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="actionenddate" class="form-control" name="actionenddate" placeholder="请输入结束时间" ng-model="model.actionenddate"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">邀请人：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="model.inviter" name="inviter" placeholder="请输入邀请人"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">跟进人：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="model.follow" name="follow" placeholder="请输入跟进人"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">支付报酬：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="model.reward" name="reward" placeholder="请输入支付报酬"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">收入：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="model.income" name="income" placeholder="请输入收入"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">反馈情况：</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-10">
+                                <label class="radio-inline">
+                                    <input type="radio" name="tickling" value="0" ng-model="model.tickling"/>热烈
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="tickling" value="1" ng-model="model.tickling"/>一般
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="tickling" value="2" ng-model="model.tickling"/>冷淡
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--操作-->
+                    <div class="form-group">
+                        <div style="font-size: 20px; text-align: center; width: 100%;">
+                            <button class="btn btn-primary" ng-click="back()">
+                                <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                返 回
+                            </button>
+                            <button class="btn btn-primary" id="saveBtn" ng-click="update()" href="#">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                保 存
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module("ExitRecordsApp", []);
+    app.controller("ExitRecordsController", function($scope, $http, ExitRecordsService) {
+        $("#actionenddate, #actionstartdate").datepicker({
+            format: "yyyy-mm-dd",
+            weekStart: 1,
+            autoclose: true,
+            todayBtn: "linked",
+            language: "zh-CN",
+            todayHighlight: true
+        });
+        $scope.model = {
+            id: "@Model.ID",
+            expertid: "@Model.expertid",
+            progromid: "@Model.progromid",
+            actionid: "@Model.actionid",
+            actiontitle: "@Model.actiontitle",
+            actionstartdate: "@(Model.actionstartdate == null ? "" : Model.actionstartdate.Value.ToString("yyyy-MM-dd"))",
+            actionenddate: "@(Model.actionenddate == null ? "" : Model.actionenddate.Value.ToString("yyyy-MM-dd"))",
+            inviter: "@Model.inviter",
+            follow: "@Model.follow",
+            reward: "@Model.reward",
+            income: "@Model.income",
+            tickling: "@Model.tickling"
+        };
+        var getTwo = function() {
+            ExitRecordsService.gettwo($scope.model.progromid).success(function(res) {
+                if (res !== null) {
+                    $scope.trees = res[0]._list;
+                }
+            });
+        };
+        $scope.$watch("model.progromid", getTwo);
+        $scope.update = function() {
+            confirmMsg("不更新", "已确定", "确定要更新此条数据吗？更新后原始数据将丢失", function() {
+                ExitRecordsService.update($scope.model).success(function(res) {
+                    if (res !== null) {
+                        if (res.Code > 0) {
+                            alertMsg("完成", res.Msg, function() {
+                                ExitRecordsService.back($scope);
+                            });
+                        }
+                    }
+                });
+            });
+        };
+        $scope.back = function() {
+            ExitRecordsService.back($scope);
+        };
+    });
+</script>
+<script src="~/businessjs/servicejs/exitRecordsService.js"></script>

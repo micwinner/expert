@@ -1,0 +1,260 @@
+﻿@{
+    ViewBag.AppName = "ExpertCommentApp";
+    ViewBag.Title = "本网评论";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .checkbox-right { margin-right: 20px; }
+</style>
+<div ng-controller="expertCommentController">
+<div style="color: #AAA; margin: 0 auto; width: 100%;">
+<form class="form-horizontal" role="form">
+<input type="hidden" name="expertid" ng-model="model.expertid"/>
+
+<!--行业内的知名度-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">1、在行业内的知名度：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="publicity" ng-model="model.publicity" value="0"/>顶级专家
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="publicity" ng-model="model.publicity" value="1"/>比较有影响力
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="publicity" ng-model="model.publicity" value="2"/>一般
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--对本网的熟悉程度-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">2、对本网的熟悉程度：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="familiarity" ng-model="model.familiarity" value="0"/>非常熟悉，经常到本网来
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="familiarity" ng-model="model.familiarity" value="1"/>知道，偶尔上
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="familiarity" ng-model="model.familiarity" value="2"/>知道，但没上过
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="familiarity" ng-model="model.familiarity" value="3"/>不知道
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--个人性格-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">3、个人性格：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="character" ng-model="model.character" value="0"/>外向
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="character" ng-model="model.character" value="1"/>内向
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--普通话水平-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">4、普通话水平：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="mandarinlevel" ng-model="model.mandarinlevel" value="0"/>非常好
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="mandarinlevel" ng-model="model.mandarinlevel" value="1"/>稍微有点口音
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="mandarinlevel" ng-model="model.mandarinlevel" value="2"/>有口音，但不影响授课
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="mandarinlevel" ng-model="model.mandarinlevel" value="3"/>口音比较重
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--培训学员对此专家的反馈-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">5、之前培训学员对此专家的反馈：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="tickling" ng-model="model.tickling" value="0"/>好
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tickling" ng-model="model.tickling" value="1"/>较好
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tickling" ng-model="model.tickling" value="2"/>一般
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tickling" ng-model="model.tickling" value="3"/>不好
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--是否愿意合作网上培训-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">6、是否愿意合作网上培训：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative1" ng-model="model.cooperative1" value="0"/>已合作
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative1" ng-model="model.cooperative1" value="1"/>非常愿意
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative1" ng-model="model.cooperative1" value="2"/>不反对
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative1" ng-model="model.cooperative1" value="3"/>不愿意
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--是否愿意合作网下培训-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">7、是否愿意合作网下培训：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative2" ng-model="model.cooperative2" value="0"/>已合作
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative2" ng-model="model.cooperative2" value="1"/>非常愿意
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative2" ng-model="model.cooperative2" value="2"/>不反对
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="cooperative2" ng-model="model.cooperative2" value="3"/>不愿意
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--可以进行的工作-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">8、可以进行的工作：</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-10">
+                <div class="checkbox checkbox-inline">
+                    <label class="checkbox-right">
+                        <input type="checkbox" name="works_zlfy" ng-model="model.works_zlfy" ng-true-value="1" ng-false-value="0"/>翻译资料
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" name="works_zxgj" ng-model="model.works_zxgj" ng-true-value="1" ng-false-value="0"/>撰写稿件
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" name="works_pxzj" ng-model="model.works_pxzj" ng-true-value="1" ng-false-value="0"/>评选专家
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" name="works_hdjb" ng-model="model.works_hdjb" ng-true-value="1" ng-false-value="0"/>活动嘉宾
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" name="works_zx" ng-model="model.works_zx" ng-true-value="1" ng-false-value="0"/>咨询
+                    </label>
+                    <label class="checkbox-right">
+                        <input type="checkbox" name="works_qt" ng-model="model.works_qt" ng-true-value="1" ng-false-value="0"/>其他
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--推荐过的专家-->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">9、推荐过的专家：（该专家推荐过的其他专家，以","分割）</h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-12 radio-inline">
+                <textarea name="recommend" ng-model="model.recommend" placeholder="请输入推荐过的专家" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--操作-->
+<div class="form-group">
+    <div style="font-size: 20px; text-align: center; width: 100%;">
+        <button class="btn btn-success" id="saveBtn" ng-click="insert()">
+            <span class="glyphicon glyphicon-ok-circle"></span>
+            保 存
+        </button>
+    </div>
+</div>
+
+</form>
+</div>
+</div>
+<script type="text/javascript">
+    var app = angular.module("ExpertCommentApp", []);
+    app.controller("expertCommentController", function($http, $scope, ExpertCommentService) {
+        $scope.model = {};
+        $scope.model.expertid = "@ViewBag.eid";
+        $scope.insert = function() {
+            confirmMsg("在想想", "确定", "确定添加此条信息吗？", function() {
+                ExpertCommentService.insert($scope.model).success(function(res) {
+                    if (res !== null) {
+                        if (res.Code > 0) {
+                            alertMsg("完成", res.Msg, function() {
+                                location.href = "/home/ExpertRecords/" + $scope.model.expertid;
+                            });
+                        }
+                    }
+                });
+            });
+        };
+    });
+</script>
+<script src="~/businessjs/servicejs/expertCommentService.js"></script>

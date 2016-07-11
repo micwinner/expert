@@ -1,0 +1,1125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="instrumentModel.Store" Alias="Self" Provider="System.Data.SqlClient"
+              ProviderManifestToken="2008"
+              xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="instrumentModelStoreContainer">
+          <EntitySet Name="EXP_Comment" EntityType="instrumentModel.Store.EXP_Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EXP_Expert" EntityType="instrumentModel.Store.EXP_Expert" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EXP_ExpertScience" EntityType="instrumentModel.Store.EXP_ExpertScience" store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="EXP_Records" EntityType="instrumentModel.Store.EXP_Records" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IM_Admin_User" EntityType="instrumentModel.Store.IM_Admin_User" store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="IM_Sort" EntityType="instrumentModel.Store.IM_Sort" store:Type="Tables" store:Schema="dbo"
+                     store:Name="IM_Sort">
+            <DefiningQuery>
+              SELECT
+              [IM_Sort].[ID] AS [ID],
+              [IM_Sort].[IMType] AS [IMType],
+              [IM_Sort].[IMNote] AS [IMNote],
+              [IM_Sort].[IMMSortID] AS [IMMSortID],
+              [IM_Sort].[IMOrder] AS [IMOrder],
+              [IM_Sort].[IMSort] AS [IMSort],
+              [IM_Sort].[IMDomain] AS [IMDomain],
+              [IM_Sort].[IMTitle] AS [IMTitle],
+              [IM_Sort].[IMKeywords] AS [IMKeywords],
+              [IM_Sort].[IMDescription] AS [IMDescription],
+              [IM_Sort].[DisplayInNetShow] AS [DisplayInNetShow],
+              [IM_Sort].[CustomizeSortIndex] AS [CustomizeSortIndex],
+              [IM_Sort].[SortTag] AS [SortTag],
+              [IM_Sort].[ClassID] AS [ClassID],
+              [IM_Sort].[ConsumablesCount] AS [ConsumablesCount],
+              [IM_Sort].[ADLocationIDList] AS [ADLocationIDList],
+              [IM_Sort].[ForumID] AS [ForumID],
+              [IM_Sort].[Summary] AS [Summary],
+              [IM_Sort].[EnName] AS [EnName]
+              FROM [dbo].[IM_Sort] AS [IM_Sort]
+            </DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IM_SortClass" EntityType="instrumentModel.Store.IM_SortClass" store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="IM_SortMain" EntityType="instrumentModel.Store.IM_SortMain" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sample" EntityType="instrumentModel.Store.Sample" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sample_Class" EntityType="instrumentModel.Store.Sample_Class" store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="Sample_Sort" EntityType="instrumentModel.Store.Sample_Sort" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VIPZone_City" EntityType="instrumentModel.Store.VIPZone_City" store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="VIPZone_Country" EntityType="instrumentModel.Store.VIPZone_Country" store:Type="Tables"
+                     Schema="dbo" />
+          <EntitySet Name="VIPZone_Province" EntityType="instrumentModel.Store.VIPZone_Province" store:Type="Tables"
+                     Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="EXP_Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="expertid" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="publicity" Type="int" />
+          <Property Name="familiarity" Type="int" />
+          <Property Name="character" Type="int" />
+          <Property Name="mandarinlevel" Type="int" />
+          <Property Name="tickling" Type="int" />
+          <Property Name="cooperative1" Type="int" />
+          <Property Name="cooperative2" Type="int" />
+          <Property Name="works_zlfy" Type="smallint" />
+          <Property Name="works_zxgj" Type="smallint" />
+          <Property Name="works_pxzj" Type="smallint" />
+          <Property Name="works_hdjb" Type="smallint" />
+          <Property Name="works_zx" Type="smallint" />
+          <Property Name="works_qt" Type="smallint" />
+          <Property Name="recommend" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EXP_Expert">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="vipaccount" Type="varchar" MaxLength="30" />
+          <Property Name="sex" Type="smallint" />
+          <Property Name="birthday" Type="datetime2" />
+          <Property Name="country" Type="int" />
+          <Property Name="province" Type="int" />
+          <Property Name="city" Type="int" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="postcode" Type="nvarchar" MaxLength="30" />
+          <Property Name="officephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobilephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="homephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="fax" Type="nvarchar" MaxLength="100" />
+          <Property Name="exptype" Type="smallint" />
+          <Property Name="education" Type="smallint" />
+          <Property Name="jobtitle" Type="smallint" />
+          <Property Name="jobposition" Type="smallint" />
+          <Property Name="jobstatus" Type="smallint" />
+          <Property Name="unitname" Type="nvarchar" MaxLength="100" />
+          <Property Name="sparetime" Type="smallint" />
+          <Property Name="hobbies" Type="nvarchar" MaxLength="200" />
+          <Property Name="resumeurl" Type="nvarchar" MaxLength="100" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="rowversion" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="positions1" Type="nvarchar" MaxLength="50" />
+          <Property Name="positions2" Type="nvarchar" MaxLength="50" />
+          <Property Name="positions3" Type="nvarchar" MaxLength="50" />
+          <Property Name="expertid" Type="varchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="EXP_ExpertScience">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="expertid" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="ins1_cls1" Type="varchar" MaxLength="16" />
+          <Property Name="ins1_cls2" Type="varchar" MaxLength="16" />
+          <Property Name="ins1_cls3" Type="varchar" MaxLength="16" />
+          <Property Name="ins2_cls1" Type="varchar" MaxLength="16" />
+          <Property Name="ins2_cls2" Type="varchar" MaxLength="16" />
+          <Property Name="ins2_cls3" Type="varchar" MaxLength="16" />
+          <Property Name="ins3_cls1" Type="varchar" MaxLength="16" />
+          <Property Name="ins3_cls2" Type="varchar" MaxLength="16" />
+          <Property Name="ins3_cls3" Type="varchar" MaxLength="16" />
+          <Property Name="dom1_cls1" Type="varchar" MaxLength="16" />
+          <Property Name="dom1_cls2" Type="varchar" MaxLength="16" />
+          <Property Name="dom1_cls3" Type="varchar" MaxLength="16" />
+          <Property Name="dom2_cls1" Type="varchar" MaxLength="16" />
+          <Property Name="dom2_cls2" Type="varchar" MaxLength="16" />
+          <Property Name="dom2_cls3" Type="varchar" MaxLength="16" />
+          <Property Name="dom3_cls1" Type="varchar" MaxLength="16" />
+          <Property Name="dom3_cls2" Type="varchar" MaxLength="16" />
+          <Property Name="dom3_cls3" Type="varchar" MaxLength="16" />
+          <Property Name="side_yj" Type="int" />
+          <Property Name="side_rj" Type="int" />
+          <Property Name="side_yy" Type="int" />
+          <Property Name="side_cz" Type="int" />
+          <Property Name="side_sjcl" Type="int" />
+          <Property Name="side_scfx" Type="int" />
+          <Property Name="side_qt" Type="int" />
+          <Property Name="side_qt_des" Type="nvarchar" MaxLength="50" />
+          <Property Name="language" Type="int" />
+          <Property Name="languagelevel" Type="int" />
+          <Property Name="itlevel" Type="int" />
+          <Property Name="training" Type="int" />
+          <Property Name="firm_familiarity" Type="int" />
+          <Property Name="gov_familiarity" Type="int" />
+        </EntityType>
+        <EntityType Name="EXP_Records">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="expertid" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="progromid" Type="int" />
+          <Property Name="actionid" Type="int" />
+          <Property Name="actiontitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="actionstartdate" Type="datetime2" />
+          <Property Name="actionenddate" Type="datetime2" />
+          <Property Name="inviter" Type="nvarchar" MaxLength="50" />
+          <Property Name="follow" Type="nvarchar" MaxLength="50" />
+          <Property Name="reward" Type="decimal" Scale="2" />
+          <Property Name="income" Type="decimal" Scale="2" />
+          <Property Name="tickling" Type="int" />
+        </EntityType>
+        <EntityType Name="IM_Admin_User">
+          <Key>
+            <PropertyRef Name="admin_name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="admin_id" Type="char" MaxLength="3" />
+          <Property Name="admin_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="admin_password" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="MobileCode" Type="varchar" MaxLength="50" />
+          <Property Name="MobileCodeTime" Type="datetime" />
+          <Property Name="MSN" Type="varchar" MaxLength="120" />
+          <Property Name="TQ" Type="varchar" MaxLength="20" />
+          <Property Name="item" Type="varchar" MaxLength="1000" />
+          <Property Name="ISExpert" Type="smallint" Nullable="false" />
+          <Property Name="DPID" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="admin_email" Type="varchar" MaxLength="80" />
+          <Property Name="PMID" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="InnerBBS" Type="varchar" MaxLength="100" />
+          <Property Name="TLID" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="IMMSortID" Type="varchar" MaxLength="50" />
+          <Property Name="IMType" Type="varchar" MaxLength="2000" />
+          <Property Name="Score_Total" Type="bigint" Nullable="false" />
+          <Property Name="Score_Month" Type="int" Nullable="false" />
+          <Property Name="CCU_ID" Type="char" MaxLength="3" />
+          <Property Name="Paper" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="EDM" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="LastModifyPasswordTime" Type="datetime" Nullable="false" />
+          <Property Name="VipManagerType" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="ExpertManagerType" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="RwzfManagerType" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="ItemID" Type="varchar" MaxLength="1000" />
+          <Property Name="IS_Pass" Type="bit" Nullable="false" />
+          <Property Name="News_ManagerType" Type="smallint" Nullable="false" />
+          <Property Name="News_ManagerList" Type="varchar" MaxLength="100" />
+          <Property Name="AdManager" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="WPToWhoID" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="VIPname" Type="varchar" MaxLength="20" />
+          <Property Name="StaffList" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="zc_manager" Type="bit" Nullable="false" />
+          <Property Name="zc_principal" Type="bit" Nullable="false" />
+          <Property Name="SRT_ID" Type="varchar" MaxLength="200" />
+          <Property Name="CRMType" Type="smallint" />
+          <Property Name="IM_Column" Type="varchar" MaxLength="50" />
+          <Property Name="SiteID" Type="nvarchar" MaxLength="300" />
+          <Property Name="MenuID" Type="nvarchar" MaxLength="300" />
+          <Property Name="COMBehaviorManager" Type="int" />
+          <Property Name="ApplicationManager" Type="int" Nullable="false" />
+          <Property Name="ConsumablesManager" Type="int" Nullable="false" />
+          <Property Name="EDMManager" Type="int" />
+          <Property Name="mobileManager" Type="int" />
+          <Property Name="travelreport" Type="int" Nullable="false" />
+          <Property Name="QQ" Type="varchar" MaxLength="20" />
+          <Property Name="searchManager" Type="varchar" MaxLength="40" />
+          <Property Name="OpenID_WX" Type="varchar" MaxLength="100" />
+          <Property Name="SensitiveWordType" Type="varchar" MaxLength="500" />
+          <Property Name="WT_ClassID" Type="varchar" MaxLength="200" />
+          <Property Name="CustomersNum" Type="int" />
+          <Property Name="IsAdmin" Type="int" Nullable="false" />
+          <Property Name="SRTID" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="NTLID" Type="int" Nullable="false" />
+          <Property Name="ParentDpid" Type="int" Nullable="false" />
+          <Property Name="SubDpid" Type="int" Nullable="false" />
+          <Property Name="FlauntManager" Type="int" Nullable="false" />
+          <Property Name="QualificationManager" Type="int" Nullable="false" />
+          <Property Name="isopennew" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“instrument.dbo.IM_Sort”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="IM_Sort">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IMType" />
+            <PropertyRef Name="IMNote" />
+            <PropertyRef Name="IMMSortID" />
+            <PropertyRef Name="IMOrder" />
+            <PropertyRef Name="IMSort" />
+            <PropertyRef Name="DisplayInNetShow" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ADLocationIDList" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IMType" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="IMNote" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IMMSortID" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="IMOrder" Type="int" Nullable="false" />
+          <Property Name="IMSort" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IMDomain" Type="varchar" MaxLength="40" />
+          <Property Name="IMTitle" Type="varchar" MaxLength="500" />
+          <Property Name="IMKeywords" Type="varchar" MaxLength="500" />
+          <Property Name="IMDescription" Type="varchar" MaxLength="500" />
+          <Property Name="DisplayInNetShow" Type="bit" Nullable="false" />
+          <Property Name="CustomizeSortIndex" Type="varchar" MaxLength="30" />
+          <Property Name="SortTag" Type="varchar" MaxLength="200" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ConsumablesCount" Type="bigint" />
+          <Property Name="ADLocationIDList" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ForumID" Type="int" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="EnName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="IM_SortClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IMSortType" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="IMType" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="IMNote" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ISZC" Type="tinyint" Nullable="false" />
+          <Property Name="NameID" Type="varchar" MaxLength="25" />
+          <Property Name="visitcount" Type="bigint" Nullable="false" />
+          <Property Name="visitcount_month" Type="bigint" Nullable="false" />
+          <Property Name="GBookNum" Type="bigint" Nullable="false" />
+          <Property Name="GBookNum_Month" Type="bigint" Nullable="false" />
+          <Property Name="keywords" Type="varchar" MaxLength="50" />
+          <Property Name="Date_ZC" Type="datetime" />
+          <Property Name="RelatedSearch_Name1" Type="nvarchar" MaxLength="30" />
+          <Property Name="RelatedSearch_URL1" Type="varchar" MaxLength="70" />
+          <Property Name="RelatedSearch_Name2" Type="nvarchar" MaxLength="30" />
+          <Property Name="RelatedSearch_URL2" Type="varchar" MaxLength="70" />
+          <Property Name="RelatedSearch_Name3" Type="nvarchar" MaxLength="30" />
+          <Property Name="RelatedSearch_URL3" Type="varchar" MaxLength="70" />
+          <Property Name="IMOrder" Type="int" Nullable="false" />
+          <Property Name="maxIMShowBRank" Type="bigint" Nullable="false" />
+          <Property Name="DisplayNewproductPromotion" Type="int" Nullable="false" />
+          <Property Name="setDisplayResult" Type="smallint" Nullable="false" />
+          <Property Name="ISWrap" Type="bit" Nullable="false" />
+          <Property Name="IMSHowBCount" Type="int" />
+          <Property Name="IMSHowIDCount" Type="int" />
+          <Property Name="IsChangeColor" Type="bit" Nullable="false" />
+          <Property Name="Meta_Title" Type="varchar" MaxLength="500" />
+          <Property Name="Meta_Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="Meta_Description" Type="varchar" MaxLength="500" />
+          <Property Name="showIndex" Type="bit" Nullable="false" />
+          <Property Name="productCount" Type="bigint" Nullable="false" />
+          <Property Name="ConsumablesCount" Type="bigint" />
+          <Property Name="zc_chengshudu" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="IMLevel" Type="int" Nullable="false" />
+          <Property Name="EnName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="IM_SortMain">
+          <Key>
+            <PropertyRef Name="IMMSortID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IMMSortID" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="IMMSortName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IMMSortOrder" Type="smallint" Nullable="false" />
+          <Property Name="IMDomain" Type="varchar" MaxLength="50" />
+          <Property Name="EnName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Sample">
+          <Key>
+            <PropertyRef Name="SampleID" />
+          </Key>
+          <Property Name="SampleID" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="SampleName" Type="varchar" MaxLength="50" />
+          <Property Name="ISRecommendv" Type="bit" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="ISshow" Type="bit" />
+          <Property Name="Sample_Edit" Type="varchar" MaxLength="100" />
+          <Property Name="IndexHomeShow" Type="bit" />
+          <Property Name="IsHasSite" Type="bit" />
+          <Property Name="InId" Type="int" />
+          <Property Name="ForuMid" Type="varchar" MaxLength="100" />
+          <Property Name="SLDomain" Type="varchar" MaxLength="50" />
+          <Property Name="InIdName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Sample_Class">
+          <Key>
+            <PropertyRef Name="Sample_ClassID" />
+          </Key>
+          <Property Name="Sample_ClassID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Sample_ClassName" Type="varchar" MaxLength="50" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ISshow" Type="bit" />
+          <Property Name="IsShowIndex" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sample_Sort">
+          <Key>
+            <PropertyRef Name="Sample_SortID" />
+          </Key>
+          <Property Name="Sample_SortID" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Sample_SortName" Type="varchar" MaxLength="50" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="ISshow" Type="bit" />
+          <Property Name="IsShowIndex" Type="bit" />
+        </EntityType>
+        <EntityType Name="VIPZone_City">
+          <Key>
+            <PropertyRef Name="CI_ID" />
+          </Key>
+          <Property Name="CI_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PR_ID" Type="int" Nullable="false" />
+          <Property Name="CI_Name" Type="varchar" MaxLength="30" />
+          <Property Name="CI_ENName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VIPZone_Country">
+          <Key>
+            <PropertyRef Name="CO_ID" />
+          </Key>
+          <Property Name="CO_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CO_Name" Type="varchar" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="VIPZone_Province">
+          <Key>
+            <PropertyRef Name="PR_ID" />
+          </Key>
+          <Property Name="PR_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CO_ID" Type="int" Nullable="false" />
+          <Property Name="PR_Name" Type="varchar" MaxLength="30" />
+          <Property Name="PR_ENName" Type="varchar" MaxLength="50" />
+          <Property Name="PR_Area" Type="int" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="instrumentModel" Alias="Self" p1:UseStrongSpatialTypes="false"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="instrumentEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="IM_Admin_User" EntityType="instrumentModel.IM_Admin_User" />
+          <EntitySet Name="IM_Sort" EntityType="instrumentModel.IM_Sort" />
+          <EntitySet Name="IM_SortClass" EntityType="instrumentModel.IM_SortClass" />
+          <EntitySet Name="IM_SortMain" EntityType="instrumentModel.IM_SortMain" />
+          <EntitySet Name="Sample" EntityType="instrumentModel.Sample" />
+          <EntitySet Name="Sample_Class" EntityType="instrumentModel.Sample_Class" />
+          <EntitySet Name="Sample_Sort" EntityType="instrumentModel.Sample_Sort" />
+          <EntitySet Name="VIPZone_City" EntityType="instrumentModel.VIPZone_City" />
+          <EntitySet Name="VIPZone_Country" EntityType="instrumentModel.VIPZone_Country" />
+          <EntitySet Name="VIPZone_Province" EntityType="instrumentModel.VIPZone_Province" />
+          <EntitySet Name="EXP_ExpertScience" EntityType="instrumentModel.EXP_ExpertScience" />
+          <EntitySet Name="EXP_Records" EntityType="instrumentModel.EXP_Records" />
+          <EntitySet Name="EXP_Expert" EntityType="instrumentModel.EXP_Expert" />
+          <EntitySet Name="EXP_Comment" EntityType="instrumentModel.EXP_Comment" />
+        </EntityContainer>
+        <EntityType Name="IM_Admin_User">
+          <Key>
+            <PropertyRef Name="admin_name" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="admin_id" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="admin_name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="admin_password" Nullable="false" MaxLength="32" FixedLength="true"
+                    Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Tel" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Mobile" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MobileCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="MobileCodeTime" Precision="3" />
+          <Property Type="String" Name="MSN" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TQ" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="item" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ISExpert" Nullable="false" />
+          <Property Type="String" Name="DPID" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="admin_email" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PMID" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="InnerBBS" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TLID" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IMMSortID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMType" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="Score_Total" Nullable="false" />
+          <Property Type="Int32" Name="Score_Month" Nullable="false" />
+          <Property Type="String" Name="CCU_ID" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Paper" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="EDM" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LastModifyPasswordTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="VipManagerType" Nullable="false" MaxLength="1" FixedLength="true"
+                    Unicode="false" />
+          <Property Type="String" Name="ExpertManagerType" Nullable="false" MaxLength="1" FixedLength="true"
+                    Unicode="false" />
+          <Property Type="String" Name="RwzfManagerType" Nullable="false" MaxLength="1" FixedLength="true"
+                    Unicode="false" />
+          <Property Type="String" Name="ItemID" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IS_Pass" Nullable="false" />
+          <Property Type="Int16" Name="News_ManagerType" Nullable="false" />
+          <Property Type="String" Name="News_ManagerList" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AdManager" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WPToWhoID" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="VIPname" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StaffList" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="zc_manager" Nullable="false" />
+          <Property Type="Boolean" Name="zc_principal" Nullable="false" />
+          <Property Type="String" Name="SRT_ID" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="CRMType" />
+          <Property Type="String" Name="IM_Column" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SiteID" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MenuID" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="COMBehaviorManager" />
+          <Property Type="Int32" Name="ApplicationManager" Nullable="false" />
+          <Property Type="Int32" Name="ConsumablesManager" Nullable="false" />
+          <Property Type="Int32" Name="EDMManager" />
+          <Property Type="Int32" Name="mobileManager" />
+          <Property Type="Int32" Name="travelreport" Nullable="false" />
+          <Property Type="String" Name="QQ" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="searchManager" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OpenID_WX" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SensitiveWordType" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WT_ClassID" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomersNum" />
+          <Property Type="Int32" Name="IsAdmin" Nullable="false" />
+          <Property Type="String" Name="SRTID" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="NTLID" Nullable="false" />
+          <Property Type="Int32" Name="ParentDpid" Nullable="false" />
+          <Property Type="Int32" Name="SubDpid" Nullable="false" />
+          <Property Type="Int32" Name="FlauntManager" Nullable="false" />
+          <Property Type="Int32" Name="QualificationManager" Nullable="false" />
+          <Property Type="Int32" Name="isopennew" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IM_Sort">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="IMType" />
+            <PropertyRef Name="IMNote" />
+            <PropertyRef Name="IMMSortID" />
+            <PropertyRef Name="IMOrder" />
+            <PropertyRef Name="IMSort" />
+            <PropertyRef Name="DisplayInNetShow" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ADLocationIDList" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="IMType" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IMNote" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IMMSortID" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="IMOrder" Nullable="false" />
+          <Property Type="String" Name="IMSort" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMDomain" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMTitle" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMKeywords" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMDescription" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="DisplayInNetShow" Nullable="false" />
+          <Property Type="String" Name="CustomizeSortIndex" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SortTag" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ClassID" Nullable="false" />
+          <Property Type="Int64" Name="ConsumablesCount" />
+          <Property Type="String" Name="ADLocationIDList" Nullable="false" MaxLength="200" FixedLength="false"
+                    Unicode="false" />
+          <Property Type="Int32" Name="ForumID" />
+          <Property Type="String" Name="Summary" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EnName" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IM_SortClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="IMSortType" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMType" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IMNote" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="ISZC" Nullable="false" />
+          <Property Type="String" Name="NameID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="visitcount" Nullable="false" />
+          <Property Type="Int64" Name="visitcount_month" Nullable="false" />
+          <Property Type="Int64" Name="GBookNum" Nullable="false" />
+          <Property Type="Int64" Name="GBookNum_Month" Nullable="false" />
+          <Property Type="String" Name="keywords" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Date_ZC" Precision="3" />
+          <Property Type="String" Name="RelatedSearch_Name1" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RelatedSearch_URL1" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RelatedSearch_Name2" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RelatedSearch_URL2" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RelatedSearch_Name3" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RelatedSearch_URL3" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IMOrder" Nullable="false" />
+          <Property Type="Int64" Name="maxIMShowBRank" Nullable="false" />
+          <Property Type="Int32" Name="DisplayNewproductPromotion" Nullable="false" />
+          <Property Type="Int16" Name="setDisplayResult" Nullable="false" />
+          <Property Type="Boolean" Name="ISWrap" Nullable="false" />
+          <Property Type="Int32" Name="IMSHowBCount" />
+          <Property Type="Int32" Name="IMSHowIDCount" />
+          <Property Type="Boolean" Name="IsChangeColor" Nullable="false" />
+          <Property Type="String" Name="Meta_Title" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Meta_Keywords" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Meta_Description" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="showIndex" Nullable="false" />
+          <Property Type="Int64" Name="productCount" Nullable="false" />
+          <Property Type="Int64" Name="ConsumablesCount" />
+          <Property Type="String" Name="zc_chengshudu" Nullable="false" MaxLength="1" FixedLength="true"
+                    Unicode="false" />
+          <Property Type="String" Name="Summary" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IMLevel" Nullable="false" />
+          <Property Type="String" Name="EnName" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IM_SortMain">
+          <Key>
+            <PropertyRef Name="IMMSortID" />
+          </Key>
+          <Property Type="Int16" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="IMMSortID" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IMMSortName" Nullable="false" MaxLength="50" FixedLength="false"
+                    Unicode="false" />
+          <Property Type="Int16" Name="IMMSortOrder" Nullable="false" />
+          <Property Type="String" Name="IMDomain" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EnName" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sample">
+          <Key>
+            <PropertyRef Name="SampleID" />
+          </Key>
+          <Property Type="String" Name="SampleID" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SampleName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ISRecommendv" />
+          <Property Type="Int32" Name="OrderBy" />
+          <Property Type="Boolean" Name="ISshow" />
+          <Property Type="String" Name="Sample_Edit" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IndexHomeShow" />
+          <Property Type="Boolean" Name="IsHasSite" />
+          <Property Type="Int32" Name="InId" />
+          <Property Type="String" Name="ForuMid" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SLDomain" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InIdName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShortName" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sample_Class">
+          <Key>
+            <PropertyRef Name="Sample_ClassID" />
+          </Key>
+          <Property Type="String" Name="Sample_ClassID" Nullable="false" MaxLength="10" FixedLength="false"
+                    Unicode="false" />
+          <Property Type="String" Name="Sample_ClassName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrderBy" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="ISshow" />
+          <Property Type="Boolean" Name="IsShowIndex" />
+        </EntityType>
+        <EntityType Name="Sample_Sort">
+          <Key>
+            <PropertyRef Name="Sample_SortID" />
+          </Key>
+          <Property Type="String" Name="Sample_SortID" Nullable="false" MaxLength="10" FixedLength="false"
+                    Unicode="false" />
+          <Property Type="String" Name="Sample_SortName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrderBy" />
+          <Property Type="Boolean" Name="ISshow" />
+          <Property Type="Boolean" Name="IsShowIndex" />
+        </EntityType>
+        <EntityType Name="VIPZone_City">
+          <Key>
+            <PropertyRef Name="CI_ID" />
+          </Key>
+          <Property Type="Int32" Name="CI_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PR_ID" Nullable="false" />
+          <Property Type="String" Name="CI_Name" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CI_ENName" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VIPZone_Country">
+          <Key>
+            <PropertyRef Name="CO_ID" />
+          </Key>
+          <Property Type="Int32" Name="CO_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CO_Name" MaxLength="24" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VIPZone_Province">
+          <Key>
+            <PropertyRef Name="PR_ID" />
+          </Key>
+          <Property Type="Int32" Name="PR_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CO_ID" Nullable="false" />
+          <Property Type="String" Name="PR_Name" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PR_ENName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PR_Area" />
+        </EntityType>
+        <EntityType Name="EXP_ExpertScience">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="expertid" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins1_cls1" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins1_cls2" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins1_cls3" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins2_cls1" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins2_cls2" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins2_cls3" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins3_cls1" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins3_cls2" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ins3_cls3" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom1_cls1" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom1_cls2" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom1_cls3" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom2_cls1" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom2_cls2" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom2_cls3" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom3_cls1" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom3_cls2" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dom3_cls3" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="side_yj" />
+          <Property Type="Int32" Name="side_rj" />
+          <Property Type="Int32" Name="side_yy" />
+          <Property Type="Int32" Name="side_cz" />
+          <Property Type="Int32" Name="side_sjcl" />
+          <Property Type="Int32" Name="side_scfx" />
+          <Property Type="Int32" Name="side_qt" />
+          <Property Type="String" Name="side_qt_des" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="language" />
+          <Property Type="Int32" Name="languagelevel" />
+          <Property Type="Int32" Name="itlevel" />
+          <Property Type="Int32" Name="training" />
+          <Property Type="Int32" Name="firm_familiarity" />
+          <Property Type="Int32" Name="gov_familiarity" />
+        </EntityType>
+        <EntityType Name="EXP_Records">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="expertid" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="progromid" />
+          <Property Type="Int32" Name="actionid" />
+          <Property Type="String" Name="actiontitle" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="actionstartdate" Precision="7" />
+          <Property Type="DateTime" Name="actionenddate" Precision="7" />
+          <Property Type="String" Name="inviter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="follow" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="reward" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="income" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="tickling" />
+        </EntityType>
+        <EntityType Name="EXP_Expert">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="vipaccount" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="sex" />
+          <Property Type="DateTime" Name="birthday" Precision="7" />
+          <Property Type="Int32" Name="country" />
+          <Property Type="Int32" Name="province" />
+          <Property Type="Int32" Name="city" />
+          <Property Type="String" Name="address" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="postcode" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="officephone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="mobilephone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="homephone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fax" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="exptype" />
+          <Property Type="Int16" Name="education" />
+          <Property Type="Int16" Name="jobtitle" />
+          <Property Type="Int16" Name="jobposition" />
+          <Property Type="Int16" Name="jobstatus" />
+          <Property Type="String" Name="unitname" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="sparetime" />
+          <Property Type="String" Name="hobbies" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="resumeurl" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="remark" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="rowversion" MaxLength="8" FixedLength="true"
+                    annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="String" Name="positions1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="positions2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="positions3" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="expertid" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EXP_Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="expertid" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="publicity" />
+          <Property Type="Int32" Name="familiarity" />
+          <Property Type="Int32" Name="character" />
+          <Property Type="Int32" Name="mandarinlevel" />
+          <Property Type="Int32" Name="tickling" />
+          <Property Type="Int32" Name="cooperative1" />
+          <Property Type="Int32" Name="cooperative2" />
+          <Property Type="Int16" Name="works_zlfy" />
+          <Property Type="Int16" Name="works_zxgj" />
+          <Property Type="Int16" Name="works_pxzj" />
+          <Property Type="Int16" Name="works_hdjb" />
+          <Property Type="Int16" Name="works_zx" />
+          <Property Type="Int16" Name="works_qt" />
+          <Property Type="String" Name="recommend" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="instrumentModelStoreContainer"
+                                CdmEntityContainer="instrumentEntities">
+          <EntitySetMapping Name="IM_Admin_User">
+            <EntityTypeMapping TypeName="instrumentModel.IM_Admin_User">
+              <MappingFragment StoreEntitySet="IM_Admin_User">
+                <ScalarProperty Name="isopennew" ColumnName="isopennew" />
+                <ScalarProperty Name="QualificationManager" ColumnName="QualificationManager" />
+                <ScalarProperty Name="FlauntManager" ColumnName="FlauntManager" />
+                <ScalarProperty Name="SubDpid" ColumnName="SubDpid" />
+                <ScalarProperty Name="ParentDpid" ColumnName="ParentDpid" />
+                <ScalarProperty Name="NTLID" ColumnName="NTLID" />
+                <ScalarProperty Name="SRTID" ColumnName="SRTID" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="CustomersNum" ColumnName="CustomersNum" />
+                <ScalarProperty Name="WT_ClassID" ColumnName="WT_ClassID" />
+                <ScalarProperty Name="SensitiveWordType" ColumnName="SensitiveWordType" />
+                <ScalarProperty Name="OpenID_WX" ColumnName="OpenID_WX" />
+                <ScalarProperty Name="searchManager" ColumnName="searchManager" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="travelreport" ColumnName="travelreport" />
+                <ScalarProperty Name="mobileManager" ColumnName="mobileManager" />
+                <ScalarProperty Name="EDMManager" ColumnName="EDMManager" />
+                <ScalarProperty Name="ConsumablesManager" ColumnName="ConsumablesManager" />
+                <ScalarProperty Name="ApplicationManager" ColumnName="ApplicationManager" />
+                <ScalarProperty Name="COMBehaviorManager" ColumnName="COMBehaviorManager" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="IM_Column" ColumnName="IM_Column" />
+                <ScalarProperty Name="CRMType" ColumnName="CRMType" />
+                <ScalarProperty Name="SRT_ID" ColumnName="SRT_ID" />
+                <ScalarProperty Name="zc_principal" ColumnName="zc_principal" />
+                <ScalarProperty Name="zc_manager" ColumnName="zc_manager" />
+                <ScalarProperty Name="StaffList" ColumnName="StaffList" />
+                <ScalarProperty Name="VIPname" ColumnName="VIPname" />
+                <ScalarProperty Name="WPToWhoID" ColumnName="WPToWhoID" />
+                <ScalarProperty Name="AdManager" ColumnName="AdManager" />
+                <ScalarProperty Name="News_ManagerList" ColumnName="News_ManagerList" />
+                <ScalarProperty Name="News_ManagerType" ColumnName="News_ManagerType" />
+                <ScalarProperty Name="IS_Pass" ColumnName="IS_Pass" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="RwzfManagerType" ColumnName="RwzfManagerType" />
+                <ScalarProperty Name="ExpertManagerType" ColumnName="ExpertManagerType" />
+                <ScalarProperty Name="VipManagerType" ColumnName="VipManagerType" />
+                <ScalarProperty Name="LastModifyPasswordTime" ColumnName="LastModifyPasswordTime" />
+                <ScalarProperty Name="EDM" ColumnName="EDM" />
+                <ScalarProperty Name="Paper" ColumnName="Paper" />
+                <ScalarProperty Name="CCU_ID" ColumnName="CCU_ID" />
+                <ScalarProperty Name="Score_Month" ColumnName="Score_Month" />
+                <ScalarProperty Name="Score_Total" ColumnName="Score_Total" />
+                <ScalarProperty Name="IMType" ColumnName="IMType" />
+                <ScalarProperty Name="IMMSortID" ColumnName="IMMSortID" />
+                <ScalarProperty Name="TLID" ColumnName="TLID" />
+                <ScalarProperty Name="InnerBBS" ColumnName="InnerBBS" />
+                <ScalarProperty Name="PMID" ColumnName="PMID" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="DPID" ColumnName="DPID" />
+                <ScalarProperty Name="ISExpert" ColumnName="ISExpert" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="TQ" ColumnName="TQ" />
+                <ScalarProperty Name="MSN" ColumnName="MSN" />
+                <ScalarProperty Name="MobileCodeTime" ColumnName="MobileCodeTime" />
+                <ScalarProperty Name="MobileCode" ColumnName="MobileCode" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+                <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IM_Sort">
+            <EntityTypeMapping TypeName="instrumentModel.IM_Sort">
+              <MappingFragment StoreEntitySet="IM_Sort">
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="ForumID" ColumnName="ForumID" />
+                <ScalarProperty Name="ADLocationIDList" ColumnName="ADLocationIDList" />
+                <ScalarProperty Name="ConsumablesCount" ColumnName="ConsumablesCount" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="SortTag" ColumnName="SortTag" />
+                <ScalarProperty Name="CustomizeSortIndex" ColumnName="CustomizeSortIndex" />
+                <ScalarProperty Name="DisplayInNetShow" ColumnName="DisplayInNetShow" />
+                <ScalarProperty Name="IMDescription" ColumnName="IMDescription" />
+                <ScalarProperty Name="IMKeywords" ColumnName="IMKeywords" />
+                <ScalarProperty Name="IMTitle" ColumnName="IMTitle" />
+                <ScalarProperty Name="IMDomain" ColumnName="IMDomain" />
+                <ScalarProperty Name="IMSort" ColumnName="IMSort" />
+                <ScalarProperty Name="IMOrder" ColumnName="IMOrder" />
+                <ScalarProperty Name="IMMSortID" ColumnName="IMMSortID" />
+                <ScalarProperty Name="IMNote" ColumnName="IMNote" />
+                <ScalarProperty Name="IMType" ColumnName="IMType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IM_SortClass">
+            <EntityTypeMapping TypeName="instrumentModel.IM_SortClass">
+              <MappingFragment StoreEntitySet="IM_SortClass">
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="IMLevel" ColumnName="IMLevel" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="zc_chengshudu" ColumnName="zc_chengshudu" />
+                <ScalarProperty Name="ConsumablesCount" ColumnName="ConsumablesCount" />
+                <ScalarProperty Name="productCount" ColumnName="productCount" />
+                <ScalarProperty Name="showIndex" ColumnName="showIndex" />
+                <ScalarProperty Name="Meta_Description" ColumnName="Meta_Description" />
+                <ScalarProperty Name="Meta_Keywords" ColumnName="Meta_Keywords" />
+                <ScalarProperty Name="Meta_Title" ColumnName="Meta_Title" />
+                <ScalarProperty Name="IsChangeColor" ColumnName="IsChangeColor" />
+                <ScalarProperty Name="IMSHowIDCount" ColumnName="IMSHowIDCount" />
+                <ScalarProperty Name="IMSHowBCount" ColumnName="IMSHowBCount" />
+                <ScalarProperty Name="ISWrap" ColumnName="ISWrap" />
+                <ScalarProperty Name="setDisplayResult" ColumnName="setDisplayResult" />
+                <ScalarProperty Name="DisplayNewproductPromotion" ColumnName="DisplayNewproductPromotion" />
+                <ScalarProperty Name="maxIMShowBRank" ColumnName="maxIMShowBRank" />
+                <ScalarProperty Name="IMOrder" ColumnName="IMOrder" />
+                <ScalarProperty Name="RelatedSearch_URL3" ColumnName="RelatedSearch_URL3" />
+                <ScalarProperty Name="RelatedSearch_Name3" ColumnName="RelatedSearch_Name3" />
+                <ScalarProperty Name="RelatedSearch_URL2" ColumnName="RelatedSearch_URL2" />
+                <ScalarProperty Name="RelatedSearch_Name2" ColumnName="RelatedSearch_Name2" />
+                <ScalarProperty Name="RelatedSearch_URL1" ColumnName="RelatedSearch_URL1" />
+                <ScalarProperty Name="RelatedSearch_Name1" ColumnName="RelatedSearch_Name1" />
+                <ScalarProperty Name="Date_ZC" ColumnName="Date_ZC" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="GBookNum_Month" ColumnName="GBookNum_Month" />
+                <ScalarProperty Name="GBookNum" ColumnName="GBookNum" />
+                <ScalarProperty Name="visitcount_month" ColumnName="visitcount_month" />
+                <ScalarProperty Name="visitcount" ColumnName="visitcount" />
+                <ScalarProperty Name="NameID" ColumnName="NameID" />
+                <ScalarProperty Name="ISZC" ColumnName="ISZC" />
+                <ScalarProperty Name="IMNote" ColumnName="IMNote" />
+                <ScalarProperty Name="IMType" ColumnName="IMType" />
+                <ScalarProperty Name="IMSortType" ColumnName="IMSortType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IM_SortMain">
+            <EntityTypeMapping TypeName="instrumentModel.IM_SortMain">
+              <MappingFragment StoreEntitySet="IM_SortMain">
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="IMDomain" ColumnName="IMDomain" />
+                <ScalarProperty Name="IMMSortOrder" ColumnName="IMMSortOrder" />
+                <ScalarProperty Name="IMMSortName" ColumnName="IMMSortName" />
+                <ScalarProperty Name="IMMSortID" ColumnName="IMMSortID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sample">
+            <EntityTypeMapping TypeName="instrumentModel.Sample">
+              <MappingFragment StoreEntitySet="Sample">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="InIdName" ColumnName="InIdName" />
+                <ScalarProperty Name="SLDomain" ColumnName="SLDomain" />
+                <ScalarProperty Name="ForuMid" ColumnName="ForuMid" />
+                <ScalarProperty Name="InId" ColumnName="InId" />
+                <ScalarProperty Name="IsHasSite" ColumnName="IsHasSite" />
+                <ScalarProperty Name="IndexHomeShow" ColumnName="IndexHomeShow" />
+                <ScalarProperty Name="Sample_Edit" ColumnName="Sample_Edit" />
+                <ScalarProperty Name="ISshow" ColumnName="ISshow" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="ISRecommendv" ColumnName="ISRecommendv" />
+                <ScalarProperty Name="SampleName" ColumnName="SampleName" />
+                <ScalarProperty Name="SampleID" ColumnName="SampleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sample_Class">
+            <EntityTypeMapping TypeName="instrumentModel.Sample_Class">
+              <MappingFragment StoreEntitySet="Sample_Class">
+                <ScalarProperty Name="IsShowIndex" ColumnName="IsShowIndex" />
+                <ScalarProperty Name="ISshow" ColumnName="ISshow" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="Sample_ClassName" ColumnName="Sample_ClassName" />
+                <ScalarProperty Name="Sample_ClassID" ColumnName="Sample_ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sample_Sort">
+            <EntityTypeMapping TypeName="instrumentModel.Sample_Sort">
+              <MappingFragment StoreEntitySet="Sample_Sort">
+                <ScalarProperty Name="IsShowIndex" ColumnName="IsShowIndex" />
+                <ScalarProperty Name="ISshow" ColumnName="ISshow" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="Sample_SortName" ColumnName="Sample_SortName" />
+                <ScalarProperty Name="Sample_SortID" ColumnName="Sample_SortID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPZone_City">
+            <EntityTypeMapping TypeName="instrumentModel.VIPZone_City">
+              <MappingFragment StoreEntitySet="VIPZone_City">
+                <ScalarProperty Name="CI_ENName" ColumnName="CI_ENName" />
+                <ScalarProperty Name="CI_Name" ColumnName="CI_Name" />
+                <ScalarProperty Name="PR_ID" ColumnName="PR_ID" />
+                <ScalarProperty Name="CI_ID" ColumnName="CI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPZone_Country">
+            <EntityTypeMapping TypeName="instrumentModel.VIPZone_Country">
+              <MappingFragment StoreEntitySet="VIPZone_Country">
+                <ScalarProperty Name="CO_Name" ColumnName="CO_Name" />
+                <ScalarProperty Name="CO_ID" ColumnName="CO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIPZone_Province">
+            <EntityTypeMapping TypeName="instrumentModel.VIPZone_Province">
+              <MappingFragment StoreEntitySet="VIPZone_Province">
+                <ScalarProperty Name="PR_Area" ColumnName="PR_Area" />
+                <ScalarProperty Name="PR_ENName" ColumnName="PR_ENName" />
+                <ScalarProperty Name="PR_Name" ColumnName="PR_Name" />
+                <ScalarProperty Name="CO_ID" ColumnName="CO_ID" />
+                <ScalarProperty Name="PR_ID" ColumnName="PR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXP_ExpertScience">
+            <EntityTypeMapping TypeName="instrumentModel.EXP_ExpertScience">
+              <MappingFragment StoreEntitySet="EXP_ExpertScience">
+                <ScalarProperty Name="gov_familiarity" ColumnName="gov_familiarity" />
+                <ScalarProperty Name="firm_familiarity" ColumnName="firm_familiarity" />
+                <ScalarProperty Name="training" ColumnName="training" />
+                <ScalarProperty Name="itlevel" ColumnName="itlevel" />
+                <ScalarProperty Name="languagelevel" ColumnName="languagelevel" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="side_qt_des" ColumnName="side_qt_des" />
+                <ScalarProperty Name="side_qt" ColumnName="side_qt" />
+                <ScalarProperty Name="side_scfx" ColumnName="side_scfx" />
+                <ScalarProperty Name="side_sjcl" ColumnName="side_sjcl" />
+                <ScalarProperty Name="side_cz" ColumnName="side_cz" />
+                <ScalarProperty Name="side_yy" ColumnName="side_yy" />
+                <ScalarProperty Name="side_rj" ColumnName="side_rj" />
+                <ScalarProperty Name="side_yj" ColumnName="side_yj" />
+                <ScalarProperty Name="dom3_cls3" ColumnName="dom3_cls3" />
+                <ScalarProperty Name="dom3_cls2" ColumnName="dom3_cls2" />
+                <ScalarProperty Name="dom3_cls1" ColumnName="dom3_cls1" />
+                <ScalarProperty Name="dom2_cls3" ColumnName="dom2_cls3" />
+                <ScalarProperty Name="dom2_cls2" ColumnName="dom2_cls2" />
+                <ScalarProperty Name="dom2_cls1" ColumnName="dom2_cls1" />
+                <ScalarProperty Name="dom1_cls3" ColumnName="dom1_cls3" />
+                <ScalarProperty Name="dom1_cls2" ColumnName="dom1_cls2" />
+                <ScalarProperty Name="dom1_cls1" ColumnName="dom1_cls1" />
+                <ScalarProperty Name="ins3_cls3" ColumnName="ins3_cls3" />
+                <ScalarProperty Name="ins3_cls2" ColumnName="ins3_cls2" />
+                <ScalarProperty Name="ins3_cls1" ColumnName="ins3_cls1" />
+                <ScalarProperty Name="ins2_cls3" ColumnName="ins2_cls3" />
+                <ScalarProperty Name="ins2_cls2" ColumnName="ins2_cls2" />
+                <ScalarProperty Name="ins2_cls1" ColumnName="ins2_cls1" />
+                <ScalarProperty Name="ins1_cls3" ColumnName="ins1_cls3" />
+                <ScalarProperty Name="ins1_cls2" ColumnName="ins1_cls2" />
+                <ScalarProperty Name="ins1_cls1" ColumnName="ins1_cls1" />
+                <ScalarProperty Name="expertid" ColumnName="expertid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXP_Records">
+            <EntityTypeMapping TypeName="instrumentModel.EXP_Records">
+              <MappingFragment StoreEntitySet="EXP_Records">
+                <ScalarProperty Name="tickling" ColumnName="tickling" />
+                <ScalarProperty Name="income" ColumnName="income" />
+                <ScalarProperty Name="reward" ColumnName="reward" />
+                <ScalarProperty Name="follow" ColumnName="follow" />
+                <ScalarProperty Name="inviter" ColumnName="inviter" />
+                <ScalarProperty Name="actionenddate" ColumnName="actionenddate" />
+                <ScalarProperty Name="actionstartdate" ColumnName="actionstartdate" />
+                <ScalarProperty Name="actiontitle" ColumnName="actiontitle" />
+                <ScalarProperty Name="actionid" ColumnName="actionid" />
+                <ScalarProperty Name="progromid" ColumnName="progromid" />
+                <ScalarProperty Name="expertid" ColumnName="expertid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXP_Expert">
+            <EntityTypeMapping TypeName="instrumentModel.EXP_Expert">
+              <MappingFragment StoreEntitySet="EXP_Expert">
+                <ScalarProperty Name="expertid" ColumnName="expertid" />
+                <ScalarProperty Name="positions3" ColumnName="positions3" />
+                <ScalarProperty Name="positions2" ColumnName="positions2" />
+                <ScalarProperty Name="positions1" ColumnName="positions1" />
+                <ScalarProperty Name="rowversion" ColumnName="rowversion" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="resumeurl" ColumnName="resumeurl" />
+                <ScalarProperty Name="hobbies" ColumnName="hobbies" />
+                <ScalarProperty Name="sparetime" ColumnName="sparetime" />
+                <ScalarProperty Name="unitname" ColumnName="unitname" />
+                <ScalarProperty Name="jobstatus" ColumnName="jobstatus" />
+                <ScalarProperty Name="jobposition" ColumnName="jobposition" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="exptype" ColumnName="exptype" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="homephone" ColumnName="homephone" />
+                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
+                <ScalarProperty Name="officephone" ColumnName="officephone" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="vipaccount" ColumnName="vipaccount" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXP_Comment">
+            <EntityTypeMapping TypeName="instrumentModel.EXP_Comment">
+              <MappingFragment StoreEntitySet="EXP_Comment">
+                <ScalarProperty Name="recommend" ColumnName="recommend" />
+                <ScalarProperty Name="works_qt" ColumnName="works_qt" />
+                <ScalarProperty Name="works_zx" ColumnName="works_zx" />
+                <ScalarProperty Name="works_hdjb" ColumnName="works_hdjb" />
+                <ScalarProperty Name="works_pxzj" ColumnName="works_pxzj" />
+                <ScalarProperty Name="works_zxgj" ColumnName="works_zxgj" />
+                <ScalarProperty Name="works_zlfy" ColumnName="works_zlfy" />
+                <ScalarProperty Name="cooperative2" ColumnName="cooperative2" />
+                <ScalarProperty Name="cooperative1" ColumnName="cooperative1" />
+                <ScalarProperty Name="tickling" ColumnName="tickling" />
+                <ScalarProperty Name="mandarinlevel" ColumnName="mandarinlevel" />
+                <ScalarProperty Name="character" ColumnName="character" />
+                <ScalarProperty Name="familiarity" ColumnName="familiarity" />
+                <ScalarProperty Name="publicity" ColumnName="publicity" />
+                <ScalarProperty Name="expertid" ColumnName="expertid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

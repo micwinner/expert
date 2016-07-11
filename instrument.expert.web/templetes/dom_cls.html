@@ -1,0 +1,54 @@
+﻿<div class="form-group">
+    <label class="col-sm-2 control-label">熟悉的领域一：</label>
+    <div class="col-sm-3">
+        <select name="dom1_cls1" class="form-control" ng-model="model.dom1_cls1">
+            <option ng-repeat="x in samplelist1" value="{{x.SampleID}}">{{x.SampleName}}</option>
+        </select>
+    </div>
+    <div class="col-sm-3" style="line-height: 34px;">
+        <select class="form-control" name="dom1_cls2" ng-model="model.dom1_cls2">
+            <option ng-repeat="x in dom1_cls2_list" value="{{x.Sample_ClassID}}">{{x.Sample_ClassName}}</option>
+        </select>
+    </div>
+    <div class="col-sm-4" style="line-height: 34px;">
+        <select class="form-control" name="dom1_cls3" ng-model="model.dom1_cls3">
+            <option ng-repeat="x in dom1_cls3_list" value="{{x.Sample_SortID}}">{{x.Sample_SortName}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">熟悉的领域二：</label>
+    <div class="col-sm-3">
+        <select name="dom2_cls1" class="form-control" ng-model="model.dom2_cls1">
+            <option ng-repeat="x in samplelist2" value="{{x.SampleID}}">{{x.SampleName}}</option>
+        </select>
+    </div>
+    <div class="col-sm-3" style="line-height: 34px;">
+        <select class="form-control" name="dom2_cls2" ng-model="model.dom2_cls2">
+            <option ng-repeat="x in dom2_cls2_list" value="{{x.Sample_ClassID}}">{{x.Sample_ClassName}}</option>
+        </select>
+    </div>
+    <div class="col-sm-4" style="line-height: 34px;">
+        <select class="form-control" name="dom2_cls3" ng-model="model.dom2_cls3">
+            <option ng-repeat="x in dom2_cls3_list" value="{{x.Sample_SortID}}">{{x.Sample_SortName}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">熟悉的领域三：</label>
+    <div class="col-sm-3">
+        <select name="dom3_cls1" class="form-control" ng-model="model.dom3_cls1">
+            <option ng-repeat="x in samplelist3" value="{{x.SampleID}}">{{x.SampleName}}</option>
+        </select>
+    </div>
+    <div class="col-sm-3" style="line-height: 34px;">
+        <select class="form-control" name="dom3_cls2" ng-model="model.dom3_cls2">
+            <option ng-repeat="x in dom3_cls2_list" value="{{x.Sample_ClassID}}">{{x.Sample_ClassName}}</option>
+        </select>
+    </div>
+    <div class="col-sm-4" style="line-height: 34px;">
+        <select class="form-control" name="dom3_cls3" ng-model="model.dom3_cls3">
+            <option ng-repeat="x in dom3_cls3_list" value="{{x.Sample_SortID}}">{{x.Sample_SortName}}</option>
+        </select>
+    </div>
+</div>

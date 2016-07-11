@@ -1,0 +1,224 @@
+/*!
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @package bootstrap-fileinput
+ * @version 4.3.2
+ *
+ * File input styling for Bootstrap 3.0
+ * Built for Yii Framework 2.0
+ * Author: Kartik Visweswaran
+ * Year: 2015
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+.file-loading {
+    background: transparent url('../img/loading.gif') top left no-repeat;
+    border: none;
+    color: #fff;
+    font-size: 999px;
+    height: 25px;
+    right: 0;
+    text-align: right;
+    top: 0;
+    width: 25px;
+}
+
+.file-object {
+    margin: 0 0 -5px 0;
+    padding: 0;
+}
+
+.btn-file {
+    overflow: hidden;
+    position: relative;
+}
+
+.btn-file input[type=file] {
+    background: none repeat scroll 0 0 transparent;
+    cursor: inherit;
+    display: block;
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+.file-caption-name {
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.input-group-lg .file-caption-name { height: 25px; }
+
+.file-preview-detail-modal { text-align: left; }
+
+.file-error-message {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+    color: #a94442;
+    margin: 5px;
+    padding: 15px;
+}
+
+.file-error-message pre, .file-error-message ul {
+    margin: 0;
+    text-align: left;
+}
+
+.file-error-message pre { margin: 5px 0; }
+
+.file-caption-disabled {
+    background-color: #EEEEEE;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.file-preview {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.file-preview-frame {
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 5px 0 #a2958a;
+    display: table;
+    float: left;
+    height: 160px;
+    margin: 8px;
+    padding: 6px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.file-preview-frame:not(.file-preview-error):hover { box-shadow: 3px 3px 5px 0 #333; }
+
+.file-preview-image {
+    height: 160px;
+    vertical-align: middle;
+}
+
+.file-preview-text {
+    background: #fff;
+    color: #428bca;
+    margin-bottom: 2px;
+    overflow-x: hidden;
+    text-align: left;
+    width: 160px;
+}
+
+.file-preview-other {
+    border: 2px solid #999;
+    border-radius: 30px;
+    display: table-cell;
+    height: 160px;
+    text-align: center;
+    vertical-align: middle;
+    width: 160px;
+}
+
+.file-preview-other:hover { opacity: 0.8; }
+
+.file-actions, .file-other-error { text-align: left; }
+
+.file-icon-lg { font-size: 1.2em; }
+
+.file-icon-2x { font-size: 2.4em; }
+
+.file-icon-4x { font-size: 4.8em; }
+
+.file-input-new .file-preview, .file-input-new .close, .file-input-new .glyphicon-file,
+.file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button,
+.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button { display: none; }
+
+.file-thumb-loading { background: transparent url('../img/loading.gif') no-repeat scroll center center content-box !important; }
+
+.file-actions { margin-top: 15px; }
+
+.file-footer-buttons { float: right; }
+
+.file-upload-indicator {
+    cursor: default;
+    opacity: 0.8;
+    padding-top: 2px;
+    width: 60%;
+}
+
+.file-upload-indicator:hover {
+    font-weight: bold;
+    opacity: 1;
+}
+
+.file-footer-caption {
+    color: #777;
+    display: block;
+    font-size: 11px;
+    margin: 5px auto 10px auto;
+    overflow: hidden;
+    padding-top: 4px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.file-preview-error {
+    box-shadow: none;
+    opacity: 0.65;
+}
+
+.file-preview-frame:not(.file-preview-error) .file-footer-caption:hover { color: #000; }
+
+.file-drop-zone {
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+    height: 100%;
+    margin: 12px 15px 12px 12px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.file-drop-zone-title {
+    color: #aaa;
+    font-size: 40px;
+    padding: 85px 10px;
+}
+
+.file-highlighted {
+    background-color: #f0f0f0;
+    border: 2px dashed #999 !important;
+}
+
+.file-uploading {
+    background: url('../img/loading-sm.gif') no-repeat center bottom 10px;
+    opacity: 0.65;
+}
+
+.file-thumb-progress .progress, .file-thumb-progress .progress-bar {
+    font-size: 9px;
+    height: 10px;
+    line-height: 10px;
+}
+
+.file-thumbnail-footer { position: relative; }
+
+.file-thumb-progress {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 22px;
+}
+
+/* IE 10 fix */
+
+.btn-file ::-ms-browse {
+    height: 100%;
+    width: 100%;
+}

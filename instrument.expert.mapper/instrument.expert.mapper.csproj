@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5E0D10C-ED10-426E-88DF-7D9B671277AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>instrument.expert.mapper</RootNamespace>
+    <AssemblyName>instrument.expert.mapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="Profiles\CommentProfile.cs" />
+    <Compile Include="Profiles\ExpertProfile.cs" />
+    <Compile Include="Profiles\ExpertRecordsProfile.cs" />
+    <Compile Include="Profiles\ExpertScienceProfile.cs" />
+    <Compile Include="Profiles\ExpertSearchProfile.cs" />
+    <Compile Include="Profiles\ExpertSearchWhereProfile.cs" />
+    <Compile Include="Profiles\IMAdminUserProfile.cs" />
+    <Compile Include="Profiles\IM_SortClassProfile.cs" />
+    <Compile Include="Profiles\IM_SortClass_SqlProfile.cs" />
+    <Compile Include="Profiles\IM_SortMainProfile.cs" />
+    <Compile Include="Profiles\IM_SortProfile.cs" />
+    <Compile Include="Profiles\SampleProfile.cs" />
+    <Compile Include="Profiles\Sample_ClassProfile.cs" />
+    <Compile Include="Profiles\Sample_SortProfile.cs" />
+    <Compile Include="Profiles\VIPZone_CityProfile.cs" />
+    <Compile Include="Profiles\VIPZone_CountryProfile.cs" />
+    <Compile Include="Profiles\VIPZone_ProvinceProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\instrument.expert.dto\instrument.expert.dto.csproj">
+      <Project>{7116d52b-1cdc-4da1-927b-d914e3c77230}</Project>
+      <Name>instrument.expert.dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\instrument.expert.model\instrument.expert.model.csproj">
+      <Project>{22de9e4e-ee9c-4586-95c4-0d45e557cbbd}</Project>
+      <Name>instrument.expert.model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

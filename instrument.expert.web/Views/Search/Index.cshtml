@@ -1,0 +1,245 @@
+﻿@{
+    ViewBag.AppName = "ExpertSearchApp";
+    ViewBag.Title = "专家查找";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker.min.css")" rel="stylesheet"/>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js")"></script>
+
+<div style="margin-top: 20px;" ng-controller="ExpertSearchController">
+    <div style="color: #AAA; margin: 0 auto; width: 100%;">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">合作信息录入</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" novalidate name="searchExpertForm" role="form">
+
+                    <!--基本信息-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">基本信息：</label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">专家姓名</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="name" ng-model="model.name" placeholder="专家姓名"/>
+                            </div>
+                            <label class="col-sm-2 control-label">VIP帐号</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="vipaccount" ng-model="model.vipaccount" placeholder="VIP帐号"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">录入人</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="anthor" ng-model="model.anthor" placeholder="录入人"/>
+                            </div>
+                            <label class="col-sm-2 control-label">录入日期</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="indate" name="indate" ng-model="model.indate" placeholder="录入日期"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="color: #999999"/>
+
+                    <!--工作信息-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">工作信息：</label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">专家类别</label>
+                            <div class="col-sm-3">
+                                <select name="exptype" ng-model="model.exptype" class="form-control">
+                                    <option value=""></option>
+                                    <option value="0">通用专家</option>
+                                    <option value="1">厂商专家</option>
+                                    <option value="2">一线专家</option>
+                                    <option value="3">退休/返聘专家</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label">应用仪器</label>
+                            <div class="col-sm-3">
+                                <select name="ins_cls" ng-model="model.ins_cls" class="form-control">
+                                    <option ng-repeat="x in imsortmainlist" value="{{x.IMMSortID}}">{{x.IMMSortName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">所在领域</label>
+                            <div class="col-sm-3">
+                                <select name="dom_cls" ng-model="model.dom_cls" class="form-control">
+                                    <option ng-repeat="x in samplelist" value="{{x.SampleID}}">{{x.SampleName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="color: #999999"/>
+
+
+                    <!--联系方式-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">联系方式：</label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">国家/地区</label>
+                            <div class="col-sm-3">
+                                <select name="country" ng-model="model.country" class="form-control">
+                                    <option value="">请选择国家/地区</option>
+                                    <option ng-repeat="x in countryList" value="{{x.CO_ID}}">{{x.CO_Name}}</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label">省/直辖市</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" ng-model="model.province" name="province">
+                                    <option value="">请选择省/直辖市</option>
+                                    <option ng-repeat="x in proList" value="{{x.PR_ID}}">{{x.PR_Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">城市</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" ng-model="model.city" name="city">
+                                    <option value="">请选择城市</option>
+                                    <option ng-repeat="x in cityList" value="{{x.CI_ID}}">{{x.CI_Name}}</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="model.phone" name="phone" placeholder="联系电话"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="color: #999999"/>
+
+                    <!--栏目合作-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">栏目合作：</label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">合作栏目</label>
+                            <div class="col-sm-3">
+                                <select id="progromid" name="progromid" class="form-control" ng-model="model.progromid">
+                                    <option value="1">采访</option>
+                                    <option value="2">评审</option>
+                                    <option value="3">发文章</option>
+                                    <option value="4">做讲座</option>
+                                    <option value="5">活动</option>
+                                    <option value="6">其他</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-2 control-label">本网动作</label>
+                            <div class="col-sm-3">
+                                <select id="actionid" name="actionid" class="form-control" ng-model="model.actionid">
+                                    <option ng-repeat="x in trees" ng-selected="x.ID == model.actionid" value="{{x.ID}}">{{x.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">动作时间</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="model.actiondate" id="actiondate" name="actiondate" placeholder="动作时间"/>
+                            </div>
+                            <label class="col-sm-2 control-label">动作总分</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="model.actionscore" name="actionscore" placeholder="动作总分"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">联系人</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" ng-model="model.contacts" name="contacts" placeholder="联系人"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--操作-->
+                    <div class="form-group">
+                        <div style="font-size: 20px; text-align: center; width: 100%;">
+                            <button class="btn btn-primary" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                                查 找
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var app = angular.module("ExpertSearchApp", []);
+    app.controller("ExpertSearchController", function($scope, $http, ExpertSearchService) {
+        $("#indate, #actiondate").datepicker({
+            format: "yyyy-mm-dd",
+            weekStart: 1,
+            autoclose: true,
+            todayBtn: "linked",
+            language: "zh-CN",
+            todayHighlight: true
+        });
+        $scope.model = {};
+        ExpertSearchService.getimsortmainlist().success(function(response) {
+            $scope.imsortmainlist = response;
+        });
+        ExpertSearchService.getsamplelist().success(function(response) {
+            $scope.samplelist = response;
+        });
+        ExpertSearchService.getCountryList().success(function(response) {
+            $scope.countryList = response;
+            $scope.proList = [];
+            $scope.cityList = [];
+        });
+        var GetTwo = function() {
+            if (angular.isUndefined($scope.model.country) || $scope.model.country === "")
+                return;
+            ExpertSearchService.getpro($scope.model.country).success(function(response) {
+                $scope.proList = response;
+                $scope.cityList = [];
+            });
+        };
+        $scope.$watch("model.country", GetTwo);
+        var getThree = function() {
+            if (angular.isUndefined($scope.model.province) || $scope.model.province === "")
+                return;
+            ExpertSearchService.getCity($scope.model.province).success(function(response) {
+                $scope.cityList = response;
+            });
+        };
+        $scope.$watch("model.province", getThree);
+        var getTwo = function() {
+            ExpertSearchService.gettwo($scope.model.progromid).success(function(res) {
+                if (res !== null) {
+                    $scope.trees = res[0]._list;
+                }
+            });
+        };
+        $scope.$watch("model.progromid", getTwo);
+
+        $scope.search = function() {
+            ExpertSearchService.search($scope.model).success(function(response) {
+
+            });
+        };
+    });
+</script>
+<script src="~/businessjs/servicejs/expertSearchService.js"></script>

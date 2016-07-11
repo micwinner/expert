@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="instrument.expert.web.MvcApplication" Language="C#" %>

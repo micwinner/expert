@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+@{
+    var app = "ng-app";
+    if (ViewBag.AppName != null)
+    {
+        app = string.Format("ng-app={0}", ViewBag.AppName);
+    }
+}
+<html @app>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet"/>
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" rel="stylesheet"/>
+    <script src="@Url.Content("~/Scripts/jquery-1.12.2.min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+
+    <script src="~/Scripts/jquery.dialog.js"></script>
+    <script src="~/Scripts/alert.js"></script>
+
+    @RenderSection("scripts", false)
+</head>
+<body>
+<div>
+    <div style="margin: 0 auto; width: 800px;">
+        @{ Html.RenderPartial("header"); }
+        @RenderBody()
+        @{ Html.RenderPartial("fotter"); }
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var key = "@(ViewContext.RouteData.Values["controller"].ToString().ToLower() + "_" + ViewContext.RouteData.Values["action"].ToString().ToLower())";
+    $(".nav-tabs li").attr("class", "");
+    $("#" + key).attr("class", "active");
+</script>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22DE9E4E-EE9C-4586-95C4-0D45E557CBBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>instrument.expert.model</RootNamespace>
+    <AssemblyName>instrument.expert.model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Expert.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Expert.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Expert.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EXP_Comment.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXP_Expert.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXP_ExpertScience.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXP_Records.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="extendmodel\ExpertSearchWhere.cs" />
+    <Compile Include="extendmodel\ExpertSearch_Sql.cs" />
+    <Compile Include="extendmodel\IMSortClass_Sql.cs" />
+    <Compile Include="IM_Admin_User.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IM_Sort.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IM_SortClass.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IM_SortMain.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sample_Class.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sample_Sort.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIPZone_City.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIPZone_Country.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIPZone_Province.cs">
+      <DependentUpon>Expert.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Expert.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Expert.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Expert.edmx.diagram">
+      <DependentUpon>Expert.edmx</DependentUpon>
+    </None>
+    <None Include="Expert.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Expert.edmx</DependentUpon>
+      <LastGenOutput>Expert.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

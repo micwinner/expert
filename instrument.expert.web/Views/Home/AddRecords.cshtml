@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.AppName = "AddRecordsApp";
+    ViewBag.Title = "添加合作信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker.min.css")" rel="stylesheet"/>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js")"></script>
+
+<div style="margin-top: 20px;" ng-controller="AddRecordsController">
+    <div style="color: #AAA; margin: 0 auto; width: 100%;">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">合作信息录入</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" novalidate name="addRecordsForm" role="form">
+                    <input type="hidden" name="expertid" ng-model="model.expertid"/>
+
+                    <!--合作内容-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">合作内容：</label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label text-left">合作栏目：</label>
+                            <div class="col-sm-4">
+                                <select id="progromid" name="progromid" required class="form-control" ng-model="model.progromid">
+                                    <option value="1">采访</option>
+                                    <option value="2">评审</option>
+                                    <option value="3">发文章</option>
+                                    <option value="4">做讲座</option>
+                                    <option value="5">活动</option>
+                                    <option value="6">其他</option>
+                                </select>
+                            </div>
+                            <span class="validation-summary-errors col-sm-4" ng-show="addRecordsForm.progromid.$invalid">
+                                <small ng-show="addRecordsForm.progromid.$error.required">合作栏目不能为空！
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">本网动作：</label>
+                            <div class="col-sm-4">
+                                <select id="actionid" name="actionid" required class="form-control" ng-model="model.actionid">
+                                    <option ng-repeat="x in trees" value="{{x.ID}}">{{x.Name}}</option>
+                                </select>
+                            </div>
+                            <span class="validation-summary-errors col-sm-4" ng-show="addRecordsForm.actionid.$invalid">
+                                <small ng-show="addRecordsForm.actionid.$error.required">本网动作不能为空！
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--动作标题-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">动作标题：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control col-sm-4" required ng-maxlength="50" ng-model="model.actiontitle" name="actiontitle" placeholder="请输入动作标题"/>
+                            </div>
+                            <span class="validation-summary-errors" ng-show="addRecordsForm.actiontitle.$invalid && addRecordsForm.$dirty">
+                                <small ng-show="addRecordsForm.actiontitle.$error.required">动作标题不能为空！
+                                </small>
+                                <small ng-show="addRecordsForm.actiontitle.$error.maxlength">最大长度为50！
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--动作时间-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">动作时间：</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-3">
+                                <input type="text" id="actionstartdate" class="form-control" required name="actionstartdate" placeholder="请输入开始时间" ng-model="model.actionstartdate"/>
+                            </div>
+                            <label class="col-sm-1 control-label">至</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="actionenddate" class="form-control" required name="actionenddate" placeholder="请输入结束时间" ng-model="model.actionenddate"/>
+                            </div>
+                            <span class="validation-summary-errors" ng-show="(addRecordsForm.actionstartdate.$invalid || addRecordsForm.actionenddate.$invalid) && addRecordsForm.$dirty">
+                                <small ng-show="addRecordsForm.actionstartdate.$error.required">开始时间不能为空！
+                                </small>
+                                <small ng-show="addRecordsForm.actionenddate.$error.required">结束时间不能为空！
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--邀请人-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">邀请人：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" required ng-maxlength="30" ng-model="model.inviter" name="inviter" placeholder="请输入邀请人"/>
+                            </div>
+                            <span class="validation-summary-errors" ng-show="addRecordsForm.inviter.$invalid && addRecordsForm.$dirty">
+                                <small ng-show="addRecordsForm.inviter.$error.required">邀请人不能为空！
+                                </small>
+                                <small ng-show="addRecordsForm.inviter.$error.maxlength">最大长度为30！
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--跟进人-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">跟进人：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" required ng-maxlength="30" ng-model="model.follow" name="follow" placeholder="请输入跟进人"/>
+                            </div>
+                            <span class="validation-summary-errors" ng-show="addRecordsForm.follow.$invalid && addRecordsForm.$dirty">
+                                <small ng-show="addRecordsForm.follow.$error.required">跟进人不能为空！
+                                </small>
+                                <small ng-show="addRecordsForm.follow.$error.maxlength">最大长度为30！
+                                </small>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--支付报酬-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">支付报酬：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" value="0" ng-model="model.reward" name="reward" placeholder="请输入支付报酬"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--收入-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">收入：</label>
+                        <div class="col-sm-9 center-block">
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" ng-model="model.income" name="income" placeholder="请输入收入"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--反馈情况-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">反馈情况：</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-10">
+                                <label class="radio-inline">
+                                    <input type="radio" name="tickling" value="0" ng-model="model.tickling"/>热烈
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="tickling" value="1" ng-model="model.tickling"/>一般
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="tickling" value="2" ng-model="model.tickling"/>冷淡
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--操作-->
+                    <div class="form-group">
+                        <div style="font-size: 20px; text-align: center; width: 100%;">
+                            <button class="btn btn-primary " ng-click="back()">
+                                <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                返 回
+                            </button>
+                            <button class="btn btn-primary" id="saveBtn" ng-disabled="addRecordsForm.$invalid" ng-click="savetodb()">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                保 存
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var app = angular.module("AddRecordsApp", []);
+    app.controller("AddRecordsController", function($scope, $http, AddRecordsService) {
+        $("#actionenddate, #actionstartdate").datepicker({
+            format: "yyyy-mm-dd",
+            weekStart: 1,
+            autoclose: true,
+            todayBtn: "linked",
+            language: "zh-CN",
+            todayHighlight: true
+        });
+        $scope.model = {};
+        $scope.model.expertid = "@ViewBag.exqertid";
+        $scope.gettwo = function() {
+            AddRecordsService.gettwo($scope.model.progromid).success(function(res) {
+                if (res !== null) {
+                    $scope.trees = res[0]._list;
+                }
+            });
+        };
+        $scope.savetodb = function() {
+            confirmMsg("在想想", "确定", "确定添加此条合作信息吗？", function() {
+                AddRecordsService.savetodb($scope.model).success(function(res) {
+                    if (res !== null) {
+                        if (res.Code > 0) {
+                            alertMsg("完成", res.Msg, function() {
+                                AddRecordsService.back($scope);
+                            });
+                        }
+                    }
+                });
+            });
+        };
+        $scope.$watch("model.progromid", function() {
+            $scope.gettwo();
+        });
+        $scope.back = function() {
+            AddRecordsService.back($scope);
+        };
+    });
+</script>
+<script src="~/businessjs/servicejs/addRecordsService.js"></script>

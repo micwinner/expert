@@ -1,0 +1,419 @@
+﻿@{
+    ViewBag.AppName = "ExpertInputApp";
+    ViewBag.Title = "专家录入";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/bootstrap-datepicker/css/bootstrap-datepicker.min.css")" rel="stylesheet"/>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/js/bootstrap-datepicker.min.js")"></script>
+<script src="@Url.Content("~/Content/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js")"></script>
+
+<link href="@Url.Content("~/Content/bootstrap-fileinput/css/fileinput.min.css")" rel="stylesheet"/>
+<script src="@Url.Content("~/Content/bootstrap-fileinput/js/fileinput.min.js")"></script>
+<script src="@Url.Content("~/Content/bootstrap-fileinput/js/fileinput_locale_zh.js")"></script>
+
+<div ng-controller="ExpertInputController">
+<div style="color: #AAA; margin: 0 auto; width: 100%;">
+
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <h3 class="panel-title">专家基础信息录入</h3>
+</div>
+<div class="panel-body">
+<form class="form-horizontal" novalidate name="expertForm" method="POST" role="form">
+<!--专家姓名-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">专家姓名<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" required ng-maxlength="30" ng-model="model.name" name="name" placeholder="请输入专家姓名"/>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.name.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.name.$error.required">专家姓名不能为空！
+                                </small>
+                                <small ng-show="expertForm.name.$error.maxlength">最大长度为30！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--vip帐号-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">vip帐号：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" ng-model="model.vipaccount" name="vipaccount" placeholder="请输入vip帐号"/>
+        </div>
+    </div>
+</div>
+<!--性别-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">性别<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <label class="radio-inline">
+                <input type="radio" name="sex" value="1" ng-model="model.sex"/>男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sex" value="0" ng-model="model.sex"/>女
+            </label>
+        </div>
+    </div>
+</div>
+<!--出生日期-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">出生日期：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="birthday" name="birthday" placeholder="请输入出生日期" ng-model="model.birthday"/>
+        </div>
+    </div>
+</div>
+<!--所在地-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">所在地<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-3">
+            <select name="country" required class="form-control" ng-model="model.country">
+                <option value="">请选择国家/地区</option>
+                <option ng-repeat="x in countryList" value="{{x.CO_ID}}">{{x.CO_Name}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <select class="form-control" required ng-model="model.province" name="province">
+                <option value="">请选择省/直辖市</option>
+                <option ng-repeat="x in proList" value="{{x.PR_ID}}">{{x.PR_Name}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <select class="form-control" required ng-model="model.city" name="city">
+                <option value="">请选择城市</option>
+                <option ng-repeat="x in cityList" value="{{x.CI_ID}}">{{x.CI_Name}}</option>
+            </select>
+        </div>
+        <span class="validation-summary-errors" ng-show="(expertForm.country.$invalid || expertForm.province.$invalid || expertForm.city.$invalid) && expertForm.$dirty">
+                                    <small>所在地不能为空！
+                                    </small>
+                                </span>
+    </div>
+</div>
+<!--通讯地址-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">通讯地址：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="address" placeholder="请输入通讯地址" id="address" ng-model="model.address"/>
+        </div>
+    </div>
+</div>
+<!--邮编-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">邮编：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="postcode" placeholder="请输入邮编" id="postcode" ng-model="model.postcode"/>
+        </div>
+    </div>
+</div>
+<!--联系电话-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">联系电话<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="mobilephone" required placeholder="请输入手机号" ng-model="model.mobilephone"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="officephone" placeholder="请输入办公室电话" ng-model="model.officephone"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="homephone" placeholder="请输入家庭电话" ng-model="model.homephone"/>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.mobilephone.$invalid && expertForm.$dirty">
+                                <small>手机号不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--电子邮箱-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">电子邮箱：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="email" placeholder="请输入电子邮箱" id="email" ng-model="model.email"/>
+        </div>
+    </div>
+</div>
+<!--传真-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">传真：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="fax" placeholder="请输入传真" id="fax" ng-model="model.fax"/>
+        </div>
+    </div>
+</div>
+<!--专家类别-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">专家类别<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-4">
+            <select name="exptype" class="form-control" required ng-model="model.exptype">
+                <option value="">请选择职位</option>
+                <option value="0">通用专家</option>
+                <option value="1">厂商专家</option>
+                <option value="2">一线专家</option>
+                <option value="3">退休/返聘专家</option>
+            </select>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.exptype.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.exptype.$error.required">专家类别不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--学历-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">学历<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-4">
+            <select name="education" class="form-control" required ng-model="model.education">
+                <option value="">请选择学历</option>
+                <option value="0">博士</option>
+                <option value="1">硕士</option>
+                <option value="2">本科</option>
+                <option value="3">其他</option>
+            </select>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.education.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.education.$error.required">学历不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--职称-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">职称<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-4">
+            <select name="jobtitle" class="form-control" required ng-model="model.jobtitle">
+                <option value="">请选择职称</option>
+                <option value="0">院士</option>
+                <option value="1">研究员/副研究员</option>
+                <option value="2">教授/副教授</option>
+                <option value="3">高工</option>
+                <option value="4">其他</option>
+            </select>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.jobtitle.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.jobtitle.$error.required">职称不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--职位-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">职位<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-4">
+            <select name="jobposition" required class="form-control" ng-model="model.jobposition">
+                <option value="">请选择职位</option>
+                <option value="0">校长/副校长</option>
+                <option value="1">院长/副院长</option>
+                <option value="2">所长/副所长</option>
+                <option value="3">主任/副主任</option>
+                <option value="4">其他</option>
+            </select>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.jobposition.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.jobposition.$error.required">职位不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--工作状态-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">工作状态<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-4">
+            <select name="jobstatus" class="form-control" required ng-model="model.jobstatus">
+                <option value="">请选择工作状态</option>
+                <option value="0">在职</option>
+                <option value="1">退休/返聘</option>
+            </select>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.jobstatus.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.jobstatus.$error.required">工作状态不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--单位-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">单位<span style="color: red">*</span>：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" ng-model="model.unitname" required name="unitname" placeholder="请输入单位名称"/>
+        </div>
+        <span class="validation-summary-errors" ng-show="expertForm.unitname.$invalid && expertForm.$dirty">
+                                <small ng-show="expertForm.unitname.$error.required">单位不能为空！
+                                </small>
+                            </span>
+    </div>
+</div>
+<!--社会职务-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">社会职务：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="positions1" ng-model="model.positions1" placeholder="请输入社会职务1"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="positions2" ng-model="model.positions2" placeholder="请输入社会职务2"/>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="positions3" ng-model="model.positions3" placeholder="请输入社会职务3"/>
+        </div>
+    </div>
+</div>
+<!--业余时间-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">业余时间：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <label class="radio-inline">
+                <input type="radio" name="sparetime" value="0" ng-model="model.sparetime"/>多
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sparetime" value="1" ng-model="model.sparetime"/>一般
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sparetime" value="2" ng-model="model.sparetime"/>少
+            </label>
+        </div>
+    </div>
+</div>
+<!--个人爱好-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">个人爱好：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <textarea name="hobbies" class="form-control" placeholder="请输入个人爱好" ng-model="model.hobbies"></textarea>
+        </div>
+    </div>
+</div>
+<!--上传简历-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">上传简历：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <input type="file" multiple name="uploader" id="uploader" value="上传简历"/>
+            <input type="hidden" id="resumeurl" name="resumeurl" ng-model="model.resumeurl"/>
+        </div>
+    </div>
+</div>
+<!--备注-->
+<div class="form-group">
+    <label class="col-sm-2 control-label">备注：</label>
+    <div class="col-sm-10">
+        <div class="col-sm-9">
+            <textarea name="remark" class="form-control" placeholder="请输入备注" ng-model="model.remark"></textarea>
+        </div>
+    </div>
+</div>
+<!--操作-->
+<div class="form-group">
+    <div style="font-size: 20px; text-align: center; width: 100%;">
+        <button class="btn btn-primary" id="saveBtn" ng-disabled="expertForm.$invalid" ng-click="insert()">
+            <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            保 存,并进入下一步
+        </button>
+    </div>
+</div>
+</form>
+</div>
+</div>
+
+</div>
+</div>
+<script>
+    var app = angular.module("ExpertInputApp", []);
+    app.controller("ExpertInputController", function($http, $scope, ExpertInputService) {
+        $("#birthday").datepicker({
+            format: "yyyy-mm-dd",
+            weekStart: 1,
+            autoclose: true,
+            todayBtn: "linked",
+            language: "zh-CN",
+            todayHighlight: true
+        });
+        $scope.model = {};
+        $("#uploader").fileinput({
+            showPreview: false,
+            language: "zh",
+            allowedFileExtensions: ["txt"],
+            showUpload: true,
+            showCaption: true,
+            uploadUrl: "/home/fileupload"
+        }).on("fileuploaded", function(event, data, previewId, index) {
+            if (data.response === 1) {
+                var url = data.jqXHR.getResponseHeader("resumeurl");
+                $scope.model.resumeurl = url;
+                $(".file-caption-name").html(url);
+                $(".file-caption-name").attr("title", url);
+            } else {
+                alert("简历文件上传失败");
+            }
+        }).on("fileclear", function() {
+            $("#resumeurl").val("");
+        });
+
+        //一级
+        ExpertInputService.getCountryList().success(function(response) {
+            $scope.countryList = response;
+            $scope.proList = [];
+            $scope.cityList = [];
+        });
+
+        //二级
+        var GetTwo = function() {
+            if (angular.isUndefined($scope.model.country) || $scope.model.country === "")
+                return;
+            ExpertInputService.getpro($scope.model.country).success(function(response) {
+                $scope.proList = response;
+                $scope.cityList = [];
+            });
+        };
+        $scope.$watch("model.country", GetTwo);
+
+        //三级
+        var getThree = function() {
+            if (angular.isUndefined($scope.model.province) || $scope.model.province === "")
+                return;
+            ExpertInputService.getCity($scope.model.province).success(function(response) {
+                $scope.cityList = response;
+            });
+        };
+        $scope.$watch("model.province", getThree);
+
+        $scope.insert = function() {
+            confirmMsg("取消", "确认", "确定要添加此条专家信息吗？", function() {
+                ExpertInputService.insert($scope.model).success(function(response) {
+                    if (response !== null) {
+                        if (response.Code > 0) {
+                            alertMsg("完成，进入下一步", response.Msg, function() {
+                                location.href = "/home/expertskill/" + response.Result;
+                            });
+                        } else {
+                            alertMsg("晕死", response.Msg, null);
+                        }
+                    } else {
+                        alertMsg("怎么回事", "请求失败", null);
+                    }
+                }).error(function(data, status, headers, config) {
+                    alertMsg("取消", "出错了", null);
+                });
+            });
+        };
+
+    });
+</script>
+<script src="~/businessjs/servicejs/expertInputService.js"></script>

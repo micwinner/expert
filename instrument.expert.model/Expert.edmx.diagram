@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e449b4c37a4b4c27b9defa1ee7b5993a" Name="关系图1" ZoomLevel="81">
+        <EntityTypeShape EntityType="instrumentModel.IM_Admin_User" Width="1.5" PointX="7.5488957686111773" PointY="14.213777325215645" />
+        <EntityTypeShape EntityType="instrumentModel.IM_Sort" Width="1.5" PointX="1.1600383730419157" PointY="30.620079323006831" />
+        <EntityTypeShape EntityType="instrumentModel.IM_SortClass" Width="1.5" PointX="2.1406567721351313" PointY="9.772597228071" />
+        <EntityTypeShape EntityType="instrumentModel.IM_SortMain" Width="1.5" PointX="4.6832918397538794" PointY="1.3345784104124543" />
+        <EntityTypeShape EntityType="instrumentModel.Sample" Width="1.5" PointX="2.4843909044211685" PointY="12.548660179855609" />
+        <EntityTypeShape EntityType="instrumentModel.Sample_Class" Width="1.5" PointX="3.0967873405184534" PointY="10.321828683056788" />
+        <EntityTypeShape EntityType="instrumentModel.Sample_Sort" Width="1.5" PointX="6.9373777727304855" PointY="23.293512712835106" />
+        <EntityTypeShape EntityType="instrumentModel.VIPZone_City" Width="1.5" PointX="1.625" PointY="22.375" />
+        <EntityTypeShape EntityType="instrumentModel.VIPZone_Country" Width="1.5" PointX="8.6640196129046458" PointY="16.662910275469958" />
+        <EntityTypeShape EntityType="instrumentModel.VIPZone_Province" Width="1.5" PointX="11.709433050690885" PointY="4.09487292361207" />
+        <EntityTypeShape EntityType="instrumentModel.EXP_ExpertScience" Width="1.5" PointX="8.22418245683619" PointY="5.7826307144866469" />
+        <EntityTypeShape EntityType="instrumentModel.EXP_Records" Width="1.5" PointX="2.2609745051064407" PointY="14.129242635392231" />
+        <EntityTypeShape EntityType="instrumentModel.EXP_Expert" Width="1.5" PointX="5.614701443172387" PointY="29.481228857059605" />
+        <EntityTypeShape EntityType="instrumentModel.EXP_Comment" Width="1.5" PointX="8.3456155808389259" PointY="29.419402210702842" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
